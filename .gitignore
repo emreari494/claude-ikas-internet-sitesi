@@ -1,0 +1,22 @@
+# Bağımlılıklar ve derleme çıktıları
+node_modules/
+.next/
+out/
+dist/
+.yarn/
+.pnp.*
+
+# Mağaza erişim bilgileri ve ortam değişkenleri
+config.json
+.env
+.env.*
+
+# Arşiv ve sistem dosyaları
+*.rar
+*.zip
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Kişisel Claude ayarları
+.claude/settings.local.json

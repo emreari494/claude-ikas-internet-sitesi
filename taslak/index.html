@@ -1,0 +1,726 @@
+<meta charset="utf-8">
+<title>Bee Flower Shop Taslak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+/* Mobil öncelikli butik vitrin: krem zemin, tek sütun akış; geniş ekranda 2-4 sütuna açılır. Marka kiti renkleri ve fontları. */
+:root{
+  --cream:#F6F1E8; --paper:#FFFDF9; --blush:#F9E8EB; --sage-soft:#EEEFDF;
+  --ink:#0E0C0B; --ink-2:#5A5249; --line:#E4DACB;
+  --pink:#EB90A5; --rose:#AC6174; --rose-deep:#8E4A5C;
+  --sage:#C5C89B; --olive:#8C846A; --honey:#EAC26C;
+  --f-display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --f-body:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-script:"Allura","Snell Roundhand","Brush Script MT",cursive;
+  --r:14px; --gut:16px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:var(--gut)}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--olive)}
+.script{font-family:var(--f-script);font-weight:400;color:var(--rose);line-height:1}
+.price{font-variant-numeric:tabular-nums;font-weight:600}
+.old{color:var(--ink-2);text-decoration:line-through;font-weight:400;font-size:.9em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:14px;letter-spacing:.02em;text-decoration:none;transition:background .2s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--rose);color:#fff}
+.btn-primary:hover{background:var(--rose-deep)}
+.btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-light{background:var(--paper);color:var(--ink)}
+
+/* Prototip çubuğu (gerçek sitede olmayacak) */
+.proto{background:var(--ink);color:var(--paper);font-size:12px}
+.proto .wrap{display:flex;gap:8px;align-items:center;justify-content:space-between;padding-block:8px;flex-wrap:wrap}
+.proto nav{display:flex;gap:6px}
+.proto button{background:transparent;border:1px solid #5a5249;color:var(--paper);border-radius:999px;padding:4px 12px;font-size:12px}
+.proto button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.proto label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.note{display:none;margin-top:10px;padding:10px 12px;border:1px dashed var(--olive);border-radius:10px;background:#FFF8E6;color:#4a4334;font-size:12px;line-height:1.5}
+.show-notes .note{display:block}
+.note b{font-weight:600}
+
+/* Duyuru + başlık */
+.announce{background:var(--blush);color:var(--rose-deep);font-size:12px;font-weight:500;text-align:center;padding:8px var(--gut)}
+.announce span+span::before{content:"·";margin-inline:10px;color:var(--pink)}
+.announce .d{display:none}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(246,241,232,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px}
+.icon-btn{background:none;border:0;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;position:relative}
+.icon-btn:hover{background:var(--blush)}
+.icon-btn svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.logo img{height:60px;width:auto}
+.hdr-r{display:flex;justify-content:flex-end}
+.badge{position:absolute;top:4px;right:2px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--rose);color:#fff;font-size:10px;font-weight:600;display:grid;place-items:center}
+.badge[data-n="0"]{display:none}
+.desk-nav{display:none}
+
+/* Mobil menü */
+.menu{position:fixed;inset:0;z-index:60;display:none}
+.menu.open{display:block}
+.scrim{position:absolute;inset:0;background:rgba(14,12,11,.35)}
+.menu .panel{position:absolute;left:0;top:0;bottom:0;width:min(86vw,360px);background:var(--paper);padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 24px;overflow:auto}
+.menu h4{font-family:var(--f-body);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);margin:22px 0 6px}
+.menu a{display:block;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--f-display);font-size:19px}
+
+/* Hero */
+.hero{position:relative}
+.hero-media{aspect-ratio:4/5;max-height:640px;width:100%;overflow:hidden;background:var(--sage-soft)}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.hero-copy{padding:28px var(--gut) 8px;display:grid;gap:14px}
+.hero-copy .script{font-size:34px}
+.hero-copy h1{font-size:clamp(34px,9vw,58px);letter-spacing:-.01em}
+.hero-copy h1 em{font-style:italic;color:var(--rose)}
+.hero-copy p{color:var(--ink-2);max-width:46ch}
+.hero-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+
+/* Güven şeridi */
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-block:1px solid var(--line);margin-top:28px}
+.trust div{background:var(--cream);padding:14px 12px;display:flex;gap:10px;align-items:center;font-size:12.5px;line-height:1.35}
+.trust svg{flex:none;width:26px;height:26px;stroke:var(--rose);fill:none;stroke-width:1.4}
+.trust b{display:block;font-weight:600;font-size:13px}
+
+section.blk{padding-block:48px 8px}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:18px}
+.sec-head h2{font-size:clamp(26px,6.5vw,38px)}
+.sec-head a{font-size:13px;font-weight:600;color:var(--rose);text-decoration:none;white-space:nowrap}
+.sec-head .eyebrow{margin-bottom:6px}
+
+/* İki yol */
+.paths{display:grid;gap:14px}
+.path{position:relative;border-radius:var(--r);overflow:hidden;display:block;text-decoration:none;color:var(--paper);aspect-ratio:5/4;background:var(--ink)}
+.path img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.path:hover img{transform:scale(1.03)}
+.path::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,11,0) 35%,rgba(14,12,11,.68))}
+.path .t{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;display:grid;gap:4px}
+.path .t span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.9}
+.path .t h3{font-size:26px}
+.path .t p{font-size:13px;opacity:.92}
+
+/* Kime hediye */
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut)}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 16px;font-size:13.5px;font-weight:500;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* Ürün kartları */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);padding-bottom:6px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px}
+.card{display:flex;flex-direction:column;gap:8px;text-decoration:none;min-width:0;cursor:pointer}
+.card .img{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--paper)}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .img img{transform:scale(1.04)}
+.tag{position:absolute;left:8px;top:8px;background:var(--paper);color:var(--rose-deep);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px}
+.tag.diy{background:var(--sage);color:#33321f}
+.quick{position:absolute;right:8px;bottom:8px;width:38px;height:38px;border-radius:50%;border:0;background:var(--paper);display:grid;place-items:center;box-shadow:0 2px 8px rgba(14,12,11,.12)}
+.quick svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.card h3{font-family:var(--f-body);font-size:13.5px;font-weight:500;line-height:1.35}
+.card .sub{font-size:12px;color:var(--ink-2)}
+.card .row{display:flex;gap:8px;align-items:baseline}
+.dots{display:flex;gap:5px}
+.dots i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(14,12,11,.15)}
+
+/* Nasıl çalışır */
+.how{background:var(--paper);border-block:1px solid var(--line);margin-top:48px;padding-block:48px}
+.steps{display:grid;gap:22px;counter-reset:s}
+.step{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center}
+.step img{width:96px;height:96px;object-fit:cover;border-radius:50%}
+.step h3{font-family:var(--f-body);font-size:15px;font-weight:600;margin-bottom:2px}
+.step h3::before{counter-increment:s;content:counter(s) ". ";color:var(--rose)}
+.step p{font-size:13.5px;color:var(--ink-2)}
+
+/* Birlikte yap bandı */
+.together{display:grid;background:var(--blush);border-radius:var(--r);overflow:hidden}
+.together img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.together .t{padding:24px 20px 26px;display:grid;gap:12px}
+.together h2{font-size:clamp(28px,7vw,40px)}
+.together p{color:var(--ink-2)}
+.together ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:13.5px}
+.together li::before{content:"♥";color:var(--rose);margin-right:8px;font-size:11px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* Kategori kutuları */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 10px}
+.cat{text-decoration:none;display:grid;gap:8px;text-align:center;font-size:13px;font-weight:500;cursor:pointer}
+.cat img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;background:var(--paper);border:1px solid var(--line)}
+
+/* Yorumlar */
+.reviews{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scrollbar-width:none}
+.reviews::-webkit-scrollbar{display:none}
+.rev{scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:10px;align-content:start}
+.stars{color:var(--honey);letter-spacing:2px;font-size:14px}
+.rev p{font-family:var(--f-display);font-size:17px;line-height:1.45}
+.rev small{color:var(--ink-2);font-size:12px}
+.ex{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);font-weight:600}
+
+/* Hikâye */
+.story{display:grid;gap:20px;align-items:center}
+.story img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%}
+.story .script{font-size:42px}
+.story h2{font-size:clamp(26px,6.5vw,38px);margin-bottom:12px}
+.story p{color:var(--ink-2);max-width:52ch}
+.story p+p{margin-top:10px}
+
+/* SSS */
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:500;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:20px;line-height:1;color:var(--rose);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:16px;color:var(--ink-2);font-size:14px;max-width:62ch}
+
+/* Bülten + alt bilgi */
+.news{margin-top:56px;background:var(--ink);color:var(--paper);padding-block:40px}
+.news h2{font-size:28px;margin-bottom:8px}
+.news p{opacity:.8;font-size:14px}
+.news form{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.news input{flex:1 1 200px;min-width:0;min-height:48px;border-radius:999px;border:1px solid #5a5249;background:transparent;color:var(--paper);padding:0 18px;font:inherit}
+.news input::placeholder{color:#b9afa3}
+footer.site{padding-block:36px 110px;font-size:13px;color:var(--ink-2)}
+.fcols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+footer h4{font-family:var(--f-body);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin:0 0 10px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+footer a{text-decoration:none}
+.legal{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;width:56px;height:56px;border-radius:50%;background:var(--paper);border:1px solid var(--line);box-shadow:0 6px 20px rgba(14,12,11,.15);display:grid;place-items:center;text-decoration:none}
+.wa svg{width:28px;height:28px;fill:#2F8F5B}
+
+/* ÜRÜN SAYFASI */
+.crumb{font-size:12px;color:var(--ink-2);padding-block:12px;display:flex;gap:6px;flex-wrap:wrap}
+.crumb a{text-decoration:none;cursor:pointer}
+.crumb a:hover{color:var(--rose)}
+.pdp{display:grid;gap:22px}
+.gallery{position:relative;margin-inline:calc(var(--gut)*-1)}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:none;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start;background:var(--paper)}
+.gdots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.gdots button{width:7px;height:7px;border-radius:4px;border:0;padding:0;background:rgba(255,253,249,.7);transition:width .2s}
+.gdots button[aria-current="true"]{width:20px;background:var(--paper)}
+.thumbs{display:none}
+.pinfo{display:grid;gap:16px;min-width:0}
+.pinfo h1{font-size:clamp(28px,7vw,40px)}
+.pinfo .lead{color:var(--ink-2);font-size:14px}
+.pprice{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pprice .price{font-size:26px;font-family:var(--f-display);font-weight:500}
+.save{background:var(--blush);color:var(--rose-deep);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px}
+.opt-label{font-size:13px;font-weight:600;margin-bottom:8px}
+.opt-label span{font-weight:400;color:var(--ink-2)}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:50%;border:2px solid var(--cream);box-shadow:0 0 0 1px var(--line);padding:0}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.qtyrow{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:var(--paper);height:48px}
+.qty button{width:44px;height:46px;border:0;background:none;font-size:18px}
+.qty output{min-width:24px;text-align:center;font-variant-numeric:tabular-nums;font-weight:600}
+.ship{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;font-size:13px}
+.ship .line{display:flex;gap:10px;align-items:flex-start}
+.ship svg{flex:none;width:20px;height:20px;stroke:var(--olive);fill:none;stroke-width:1.6;margin-top:1px}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--rose);border-radius:3px;transition:width .4s}
+.gift{border:1px dashed var(--pink);border-radius:12px;padding:12px 14px;background:#FFF8F9}
+.gift label{display:flex;gap:10px;align-items:center;font-size:13.5px;font-weight:500;cursor:pointer}
+.gift input[type=checkbox]{width:18px;height:18px;accent-color:var(--rose)}
+.gift textarea{margin-top:10px;width:100%;min-height:76px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:13.5px;background:var(--paper);resize:vertical}
+.gift .cnt{font-size:11px;color:var(--ink-2);text-align:right;margin-top:4px}
+.highlights{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hl{background:var(--sage-soft);border-radius:12px;padding:12px;font-size:12.5px;line-height:1.35}
+.hl b{display:block;font-family:var(--f-display);font-size:19px;font-weight:500}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.box h3{font-size:22px;margin-bottom:12px}
+.box ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px}
+.box li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dotted var(--line);padding-bottom:8px}
+.box li span:last-child{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.made{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.made figure{margin:0;display:grid;gap:6px;font-size:12px;color:var(--ink-2)}
+.made img{border-radius:12px;aspect-ratio:1;object-fit:cover;width:100%}
+.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--paper);border-top:1px solid var(--line);padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom,0px));display:none;align-items:center;gap:12px;transform:translateY(100%);transition:transform .25s}
+.sticky-buy.on{transform:none}
+.sticky-buy .mini{flex:1;min-width:0;font-size:12px;line-height:1.3}
+.sticky-buy .mini b{display:block;font-size:15px}
+body.pg-product .sticky-buy{display:flex}
+body.pg-product .wa{display:none}
+
+/* Sepet çekmecesi */
+.drawer{position:fixed;inset:0;z-index:70;visibility:hidden}
+.drawer.open{visibility:visible}
+.drawer .scrim{opacity:0;transition:opacity .25s}
+.drawer.open .scrim{opacity:1}
+.drawer .panel{position:absolute;right:0;top:0;bottom:0;width:min(100vw,420px);background:var(--cream);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s;padding-top:env(safe-area-inset-top,0px)}
+.drawer.open .panel{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:12px var(--gut);border-bottom:1px solid var(--line)}
+.dh h2{font-size:24px}
+.dfree{padding:12px var(--gut);font-size:13px;display:grid;gap:8px;background:var(--paper);border-bottom:1px solid var(--line)}
+.ditems{flex:1;overflow:auto;padding:8px var(--gut)}
+.ditem{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.ditem img{width:72px;height:90px;object-fit:cover;border-radius:8px}
+.ditem .n{font-weight:500;line-height:1.3}
+.ditem .m{color:var(--ink-2);font-size:12px}
+.ditem .gn{font-size:11.5px;color:var(--rose-deep);font-style:italic;margin-top:4px}
+.ditem button.rm{background:none;border:0;color:var(--ink-2);font-size:12px;text-decoration:underline;padding:0;margin-top:6px}
+.empty{text-align:center;padding:40px 10px;color:var(--ink-2);display:grid;gap:14px;justify-items:center}
+.empty .script{font-size:40px}
+.dfoot{padding:14px var(--gut) calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--paper);display:grid;gap:10px}
+.dfoot .tot{display:flex;justify-content:space-between;font-size:15px}
+.dfoot small{color:var(--ink-2);font-size:11.5px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:80;background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:13px;transition:.25s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* Geniş ekran */
+@media (min-width:768px){
+  :root{--gut:28px}
+  .announce .d{display:inline}
+  .hero{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;max-width:1180px;margin-inline:auto;padding:32px var(--gut) 0;gap:48px}
+  .hero-media{border-radius:20px;order:2;aspect-ratio:4/5}
+  .hero-copy{padding:0}
+  .hero-ctas{display:flex}
+  .trust{grid-template-columns:repeat(4,1fr)}
+  .trust div{justify-content:center}
+  .paths{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:repeat(4,1fr);gap:28px 18px}
+  .rail{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:0;gap:18px}
+  .steps{grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .step img{width:180px;height:180px}
+  .together{grid-template-columns:1.1fr 1fr;align-items:center}
+  .together img{height:100%;aspect-ratio:auto}
+  .together .t{padding:40px}
+  .cats{grid-template-columns:repeat(6,1fr)}
+  .reviews{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0}
+  .story{grid-template-columns:1fr 1.1fr;gap:48px}
+  .fcols{grid-template-columns:2fr 1fr 1fr 1fr}
+  .pdp{grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+  .gallery{margin:0;position:sticky;top:84px}
+  .slides img{border-radius:16px}
+  .thumbs{display:flex;gap:10px;margin-top:10px}
+  .thumbs button{border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:0;width:72px;background:none}
+  .thumbs button[aria-current="true"]{border-color:var(--ink)}
+  .thumbs img{aspect-ratio:4/5;object-fit:cover}
+  .gdots{display:none}
+  body.pg-product .sticky-buy{display:none}
+  .made{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1024px){
+  header.site .wrap{grid-template-columns:auto 1fr;gap:32px}
+  .hdr-l{display:none}
+  .hdr-r{align-items:center;gap:8px}
+  .desk-nav{display:flex;gap:26px;font-size:13.5px;font-weight:500;margin-right:auto;padding-left:16px}
+  .desk-nav a{text-decoration:none;cursor:pointer;padding-block:6px;border-bottom:1px solid transparent}
+  .desk-nav a:hover{border-color:var(--rose)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="proto">
+  <div class="wrap">
+    <strong>Taslak · Bee Flower Shop</strong>
+    <nav aria-label="Taslak sayfaları">
+      <button type="button" data-go="home" aria-pressed="true">Ana sayfa</button>
+      <button type="button" data-go="p-lilyum-kit" aria-pressed="false">Ürün sayfası</button>
+    </nav>
+    <label><input type="checkbox" id="notes-toggle"> Tasarım notları</label>
+  </div>
+</div>
+
+<div class="announce"><span>1.500 TL üzeri ücretsiz kargo</span><span>Ertesi iş günü kargoda</span><span class="d">El yapımı, solmayan çiçekler</span></div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="hdr-l">
+      <button class="icon-btn" type="button" id="menu-open" aria-label="Menüyü aç"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>    </div>
+    <a class="logo" data-go="home" href="#home" aria-label="Bee Flower Shop ana sayfa"><img src="img/logo.png" alt="Bee Flowers – Handmade Floral Design" width="520" height="347"></a>
+    <div class="hdr-r">
+      <nav class="desk-nav" aria-label="Ana menü">
+        <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
+        <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
+        <a data-go="home" data-jump="birlikte">Birlikte Yap</a>
+        <a data-go="home" data-jump="kime">Kime Hediye?</a>
+      </nav>
+      <button class="icon-btn" type="button" aria-label="Ara"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
+      <button class="icon-btn" type="button" id="cart-open" aria-label="Sepeti aç"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="badge" id="cart-badge" data-n="0">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="scrim" data-close-menu></div>
+  <div class="panel" role="dialog" aria-label="Menü">
+    <button class="icon-btn" type="button" data-close-menu aria-label="Menüyü kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <h4>Alışveriş</h4>
+    <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
+    <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
+    <a data-go="home" data-jump="birlikte">Birlikte Yap Setleri</a>
+    <h4>Kime hediye?</h4>
+    <a data-go="home" data-jump="kime">Sevgiliye</a>
+    <a data-go="home" data-jump="kime">Anneye</a>
+    <a data-go="home" data-jump="kime">Arkadaşa</a>
+    <a data-go="home" data-jump="kime">Kendine</a>
+    <h4>Yardım</h4>
+    <a data-go="home" data-jump="sss">Sık sorulan sorular</a>
+    <a data-go="home" data-jump="sss">Kargo ve iade</a>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<section class="news">
+  <div class="wrap">
+    <h2>Yeni renkler önce size gelsin</h2>
+    <p>Yeni kitleri ve özel gün koleksiyonlarını ayda en fazla iki e-postayla duyuruyoruz.</p>
+    <form id="news-form">
+      <input id="news-email" type="email" placeholder="E-posta adresiniz" aria-label="E-posta adresiniz" required>
+      <button class="btn btn-light" type="submit">Abone ol</button>
+    </form>
+    <p id="news-ok" hidden style="margin-top:10px">Teşekkürler, listeye eklendiniz. (Taslakta e-posta gönderilmez.)</p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <img src="img/logo.png" alt="Bee Flowers" width="160" style="width:150px;margin-bottom:10px">
+        <p>El yapımı şönil çiçekler ve kendin yap kitleri. Her parça dükkânımızda elde hazırlanır.</p>
+        <p style="margin-top:10px">WhatsApp: <span style="user-select:all;font-weight:600;color:var(--ink)">0551 096 56 14</span></p>
+      </div>
+      <div><h4>Alışveriş</h4><ul><li><a href="#home">Hazır çiçekler</a></li><li><a href="#home">Kendin yap kitleri</a></li><li><a href="#home">Birlikte yap</a></li></ul></div>
+      <div><h4>Yardım</h4><ul><li><a href="#home">Kargo ve teslimat</a></li><li><a href="#home">İade ve değişim</a></li><li><a href="#home">Sipariş takibi</a></li></ul></div>
+      <div><h4>Kurumsal</h4><ul><li><a href="#home">Hikâyemiz</a></li><li><a href="#home">İletişim</a></li><li><a href="#home">KVKK ve çerezler</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Bee Flower Shop</span><span>Güvenli ödeme · ikas altyapısı</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/905510965614" target="_blank" rel="noopener" aria-label="WhatsApp ile yazın"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.5-.4Z"/></svg></a>
+
+<div class="sticky-buy" id="sticky-buy">
+  <div class="mini"><span id="sb-name">Pembe Lilyum Buket Kiti</span><b class="price" id="sb-price">399 TL</b></div>
+  <button class="btn btn-primary" type="button" id="sb-add">Sepete ekle</button>
+</div>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="scrim" data-close-cart></div>
+  <aside class="panel" role="dialog" aria-label="Sepetiniz">
+    <div class="dh"><h2>Sepetiniz</h2><button class="icon-btn" type="button" data-close-cart aria-label="Sepeti kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dfree"><span id="free-msg"></span><div class="bar"><i id="free-bar" style="width:0"></i></div></div>
+    <div class="ditems" id="ditems"></div>
+    <div class="dfoot">
+      <div class="tot"><span>Ara toplam</span><b class="price" id="dtotal">0 TL</b></div>
+      <button class="btn btn-primary" type="button" id="checkout">Güvenli ödemeye geç</button>
+      <small>Ödeme adımı ikas'ın güvenli ödeme sayfasında tamamlanır.</small>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const FREE=1500;
+const COLORS={pembe:"#F2A7BC",mavi:"#4C6FD1",lila:"#B79BE0",sari:"#F2CF55",kirmizi:"#C8324A",beyaz:"#F7F4EE",mor:"#7F5BB7",lacivert:"#273D8F"};
+const P={
+  "lilyum-kit":{name:"Lilyum Buket Kiti",type:"diy",cat:"Kendin Yap Kitleri",price:399,old:449,
+    lead:"65 şönil tel, buket ambalajı ve QR'lı video anlatımla kendi lilyum buketinizi yaparsınız. Ek malzeme gerekmez.",
+    variants:{pembe:["kit-pembe-1","kit-pembe-3","kit-pembe-2"],mavi:["kit-mavi"],lila:["kit-lila"],sari:["kit-sari"]},
+    box:[["Şönil tel, 30 cm","65 adet"],["Çiçek teli, 30 cm","5 adet"],["Yeşil çiçek bandı","3 m"],["Tomurcuk","20 adet"],["Kurdele","1 adet"],["\"Love\" kalpli buket ambalajı, 45 cm","1 adet"],["Not kartı","2 adet"]],
+    hl:[["45×20 cm","bitmiş buket ölçüsü"],["QR video","adım adım anlatım"],["Her şey dahil","ek malzeme gerekmez"],["2 not kartı","mesajınızı yazın"]]},
+  "papatya-kit":{name:"Papatya Çiçek Yapım Kiti",type:"diy",cat:"Kendin Yap Kitleri",price:239,old:299,lead:"Mini saksıda şönil papatya yapım seti. Tüm malzemeler kutuda.",variants:{pembe:["papatya-kit"]}},
+  "birlikte":{name:"Sevgilinle Yap Buket Seti",type:"diy",cat:"Birlikte Yap",price:null,lead:"İki kişilik set: mavi + pembe, toplam 130 şönil. Birlikte yapın, ikiniz de bir buketle kalın.",variants:{"mavi-pembe":["birlikte"]}},
+  "lilyum-tekli":{name:"Kırmızı Lilyum Tekli Çiçek",type:"ready",cat:"Hazır Çiçekler",price:350,lead:"Şeffaf ambalaj ve kurdeleyle hazır gönderilir. Solmaz, bakım istemez.",variants:{kirmizi:["lilyum-kirmizi"]}},
+  "lale":{name:"Tekli Şönil Lale",type:"ready",cat:"Hazır Çiçekler",price:350,lead:"Altın kenarlı şeffaf kılıfta tek lale. Masaüstüne ya da küçük bir teşekküre.",variants:{mor:["lale-mor"],pembe:["lale-pembe"],beyaz:["lale-sari"]}},
+  "mini-saksi":{name:"Lilyum Mini Saksı",type:"ready",cat:"Hazır Çiçekler",price:450,lead:"Beyaz mini saksıda hazır şönil çiçek. Yaklaşık 18 cm.",variants:{sari:["saksi-sari"],lacivert:["saksi-lacivert"],beyaz:["saksi-papatya"]}}
+};
+const VNAME={pembe:"Pembe",mavi:"Mavi",lila:"Lila",sari:"Sarı",kirmizi:"Kırmızı",beyaz:"Beyaz",mor:"Mor",lacivert:"Lacivert","mavi-pembe":"Mavi + Pembe"};
+const img=n=>`img/${n}.jpg`;
+const tl=n=>n==null?"—":n.toLocaleString("tr-TR")+" TL";
+let cart=[];try{cart=JSON.parse(localStorage.getItem("bee-cart")||"[]")}catch(e){}
+const save=()=>{try{localStorage.setItem("bee-cart",JSON.stringify(cart))}catch(e){}};
+
+function card(id,v,opts={}){
+  const p=P[id];v=v||Object.keys(p.variants)[0];
+  const vs=Object.keys(p.variants);
+  const tag=p.type==="diy"?`<span class="tag diy">Kendin yap</span>`:(opts.tag?`<span class="tag">${opts.tag}</span>`:"");
+  return `<div class="card" role="link" tabindex="0" data-open="${id}" data-v="${v}">
+    <div class="img"><img loading="lazy" src="${img(p.variants[v][0])}" alt="${VNAME[v]||""} ${p.name}">${tag}
+      ${p.price?`<button class="quick" type="button" data-add="${id}" data-v="${v}" aria-label="Sepete ekle"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>`:""}</div>
+    <h3>${opts.title||(VNAME[v]&&vs.length>1?VNAME[v]+" ":"")+p.name}</h3>
+    ${vs.length>1?`<div class="dots">${vs.map(k=>`<i style="background:${COLORS[k]||"#ddd"}" title="${VNAME[k]}"></i>`).join("")}</div>`:`<div class="sub">${p.type==="diy"?"Tüm malzemeler kutuda":"Hazır gönderilir"}</div>`}
+    <div class="row"><span class="price">${p.price?tl(p.price):"Fiyat ikas'tan"}</span>${p.old?`<span class="old">${tl(p.old)}</span>`:""}</div>
+  </div>`;
+}
+
+function home(){
+  return `
+  <section class="hero">
+    <div class="hero-media"><img src="img/hero.jpg" alt="Hasır sepette el yapımı şönil bahar çiçekleri, oturma odası sehpasında" fetchpriority="high"></div>
+    <div class="hero-copy">
+      <span class="script">Bugün sürpriz, hep hatıra</span>
+      <h1>Solmayan çiçekler, <em>elle</em> yapılmış hediyeler.</h1>
+      <p>Şönil çiçeklerimizi dükkânımızda tek tek elde hazırlıyoruz. İster hazır gönderin, ister kitle birlikte yapın.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" data-go="home" data-jump="hazir-cicekler">Hazır çiçekler</a>
+        <a class="btn btn-ghost" data-go="home" data-jump="kitler">Kendin yap kitleri</a>
+      </div>
+      <div class="note"><b>Neden böyle:</b> İlk ekran iki ürün ailesini hemen ayırıyor. Hero fotoğrafı yazısız ve yaşam alanında; Trendyol kapakları burada kullanılmıyor.</div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg><span><b>El yapımı</b>Her parça tek tek</span></div>
+    <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><span><b>Solmaz</b>Su ve bakım istemez</span></div>
+    <div><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2"/></svg><span><b>QR ile video</b>Adım adım anlatım</span></div>
+    <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span><b>Türkiye geneli</b>Ertesi iş günü kargoda</span></div>
+  </div>
+
+  <section class="blk wrap">
+    <div class="sec-head"><div><div class="eyebrow">İki yol, iki hediye</div><h2>Nasıl hediye etmek istersiniz?</h2></div></div>
+    <div class="paths">
+      <a class="path" data-go="home" data-jump="hazir-cicekler"><img loading="lazy" src="img/hazir.jpg" alt="Turuncu çanta aranjmanında şönil lilyum ve güller"><div class="t"><span>Hazır gönder</span><h3>Hazır çiçekler</h3><p>Buket, saksı, sepet ve tekli çiçekler. Paketli gelir.</p></div></a>
+      <a class="path" data-go="home" data-jump="kitler"><img loading="lazy" src="img/diy.jpg" alt="Şönil telle lilyum yapılırken eller ve QR kodlu anlatım kartı"><div class="t"><span>Birlikte yap</span><h3>Kendin yap kitleri</h3><p>Kutudan bir buket çıkar. QR'ı okutun, videoyla yapın.</p></div></a>
+    </div>
+  </section>
+
+  <section class="blk wrap" id="kime">
+    <div class="sec-head"><div><div class="eyebrow">Kime hediye?</div><h2>Kimi mutlu edeceksiniz?</h2></div></div>
+    <div class="chips" role="group" aria-label="Kime hediye">
+      ${["Sevgiliye","Anneye","Arkadaşa","Kendine","Öğretmene","Yeni eve"].map((c,i)=>`<button class="chip" type="button" aria-pressed="${i===0}">${c}</button>`).join("")}
+    </div>
+    <div class="rail" id="kime-rail" style="margin-top:16px">
+      ${card("lilyum-kit","pembe",{})}${card("birlikte")}${card("lilyum-tekli")}${card("lale","pembe")}
+    </div>
+    <div class="note"><b>Neden böyle:</b> Hediye alan kişi ürünü değil, karşısındaki kişiyi düşünerek gelir. Bu filtre ikas'ta etiketlerle çalışır. Her ürüne "sevgiliye, anneye…" etiketi eklenir.</div>
+  </section>
+
+  <section class="blk wrap" id="kitler">
+    <div class="sec-head"><div><div class="eyebrow">Çok satanlar</div><h2>Kendin yap kitleri</h2></div><a data-go="home" data-jump="kitler">Tümü →</a></div>
+    <div class="grid">
+      ${card("lilyum-kit","pembe")}${card("lilyum-kit","mavi")}${card("lilyum-kit","lila")}${card("papatya-kit")}
+    </div>
+    <div class="note"><b>Neden böyle:</b> Şu an her renk ayrı ürün. Yeni yapıda tek ürün ve renk varyantları var. Karttaki renk noktaları da bunu gösteriyor. Uzun pazaryeri başlıkları ("…| 65 Adet Şönil İçerir Hobi ve Hediye Seti") sitede kısalıyor.</div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="eyebrow">Kit nasıl çalışır?</div><h2>Kutudan bir buket çıkar</h2></div></div>
+      <div class="steps">
+        <div class="step"><img loading="lazy" src="img/kit-pembe-2.jpg" alt="Kit içeriği: şönil teller, bant, tomurcuk, ambalaj ve not kartları"><div><h3>Kutuyu açın</h3><p>Renkleri seçilmiş şönil, tel, bant, tomurcuk, ambalaj ve not kartı içindedir. Ek malzeme gerekmez.</p></div></div>
+        <div class="step"><img loading="lazy" src="img/kit-lila.jpg" alt="Lila şönil çiçeği adım adım şekillendiren eller"><div><h3>QR'ı okutun</h3><p>Video anlatımı telefonunuzda açın. Her çiçeği adım adım şekillendirin.</p></div></div>
+        <div class="step"><img loading="lazy" src="img/kit-pembe-1.jpg" alt="Bitmiş pembe lilyum buketi elde tutuluyor"><div><h3>Buketi sarın</h3><p>Kalpli ambalaja sarın, notunuzu yazın. Solmayan bir hediye hazır.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk wrap" id="birlikte">
+    <div class="together">
+      <img loading="lazy" src="img/birlikte.jpg" alt="Bir çift masada mavi ve pembe şönil buketlerini birlikte yapıyor">
+      <div class="t">
+        <div class="eyebrow">İki kişilik setler</div>
+        <h2>Birlikte yapın, <span class="script" style="font-size:1.25em">birlikte saklayın</span></h2>
+        <p>Bir akşam aktivitesi ve sonunda iki buket. Sevgilinizle ya da en yakın arkadaşınızla.</p>
+        <ul><li>Toplam 130 şönil, iki ayrı renk</li><li>İki kişilik ambalaj ve not kartları</li><li>QR ile video anlatım</li></ul>
+        <div class="pair">
+          <button class="btn btn-primary" type="button" data-open="birlikte">Sevgilinle Yap</button>
+          <button class="btn btn-ghost" type="button" data-open="birlikte">Arkadaşınla Yap</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk wrap" id="hazir-cicekler">
+    <div class="sec-head"><div><div class="eyebrow">Paketli, hazır gönderilir</div><h2>Hazır çiçekler</h2></div><a data-go="home" data-jump="hazir-cicekler">Tümü →</a></div>
+    <div class="cats" style="margin-bottom:28px">
+      ${[["cat-buket","Buketler"],["saksi-papatya","Mini saksılar"],["cat-sepet","Sepetler"],["cat-vazo","Vazolar"],["cat-canta","Çanta aranjman"],["cat-tekli","Tekli çiçekler"]].map(([i,t])=>`<a class="cat"><img loading="lazy" src="img/${i}.jpg" alt="">${t}</a>`).join("")}
+    </div>
+    <div class="grid">
+      ${card("lilyum-tekli",null,{tag:"Yeni"})}${card("mini-saksi","sari")}${card("lale","mor")}${card("mini-saksi","lacivert")}
+    </div>
+  </section>
+
+  <section class="blk wrap">
+    <div class="sec-head"><div><div class="eyebrow">Müşterilerimiz anlatıyor</div><h2>Hediyeyi alanlar ne dedi?</h2></div></div>
+    <div class="reviews">
+      <div class="rev"><span class="ex">Örnek yorum</span><div class="stars">★★★★★</div><p>"Annem için aldım, aylar geçti hâlâ ilk günkü gibi duruyor."</p><small>Hazır lilyum mini saksı</small></div>
+      <div class="rev"><span class="ex">Örnek yorum</span><div class="stars">★★★★★</div><p>"Sevgilimle bir akşam oturup yaptık. Video çok açıklayıcıydı."</p><small>Sevgilinle Yap seti</small></div>
+      <div class="rev"><span class="ex">Örnek yorum</span><div class="stars">★★★★★</div><p>"Paketleme çok özenliydi, not kartı ayrı bir incelik olmuş."</p><small>Pembe lilyum buket kiti</small></div>
+    </div>
+    <div class="note"><b>Yapılacak:</b> Bunlar örnek yorumlardır. Yerlerine Trendyol'daki gerçek yorumlarınız (izinle, isim baş harfleriyle) ya da ikas yorum uygulaması gelecek. Yorumsuz bir sitenin en büyük eksiği güven.</div>
+  </section>
+
+  <section class="blk wrap">
+    <div class="story">
+      <img loading="lazy" src="img/hikaye.jpg" alt="Dükkânda elde hazırlanmış pembe şönil buket">
+      <div>
+        <span class="script">Bee Flower Shop</span>
+        <h2>Her çiçek, küçük dükkânımızda elde şekillenir.</h2>
+        <p>Şönil teli renk renk ayırıyor, her kiti tek tek sayıp paketliyoruz. Hazır çiçeklerimizi de aynı masada elle büküyoruz.</p>
+        <p>El yapımı olduğu için iki çiçek hiçbir zaman birebir aynı olmaz. Biz bunu bir kusur olarak görmüyoruz.</p>
+        <a class="btn btn-ghost" style="margin-top:18px" data-go="home">Hikâyemizi okuyun</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk wrap faq" id="sss">
+    <div class="sec-head"><div><div class="eyebrow">Sık sorulanlar</div><h2>Aklınıza takılanlar</h2></div></div>
+    <details open><summary>Siparişim ne zaman kargoya verilir?</summary><p>Hafta içi verilen siparişler ertesi iş günü kargoya teslim edilir. Türkiye'nin her yerine gönderiyoruz.</p></details>
+    <details><summary>Kitte kaç şönil var, ek malzeme gerekir mi?</summary><p>Lilyum buket kitlerinde 65 adet 30 cm şönil tel bulunur. Tel, bant, tomurcuk, ambalaj ve not kartı da kutudadır. Ek malzeme gerekmez.</p></details>
+    <details><summary>Video anlatıma nasıl ulaşırım?</summary><p>Kutudaki QR kodu telefonunuzun kamerasıyla okutun. Anlatım videosu açılır.</p></details>
+    <details><summary>Çiçekler solar mı, bakım ister mi?</summary><p>Şönil çiçekler solmaz, su ya da güneş istemez. Tozunu yumuşak bir fırçayla alabilirsiniz.</p></details>
+    <details><summary>İade ve değişim nasıl olur?</summary><p>Teslimattan itibaren 14 gün içinde iade ya da değişim yapabilirsiniz.</p></details>
+  </section>`;
+}
+
+let state={id:"lilyum-kit",v:"pembe",qty:1,slide:0};
+function product(){
+  const p=P[state.id];const v=state.v;const imgs=p.variants[v];
+  const vs=Object.keys(p.variants);
+  const others=Object.keys(P).filter(k=>k!==state.id&&P[k].price).slice(0,4);
+  return `
+  <div class="wrap">
+    <nav class="crumb" aria-label="Konum"><a data-go="home">Ana sayfa</a><span>/</span><a data-go="home" data-jump="${p.type==="diy"?"kitler":"hazir-cicekler"}">${p.cat}</a><span>/</span><span>${p.name}</span></nav>
+    <div class="pdp">
+      <div class="gallery">
+        <div class="slides" id="slides">${imgs.map((n,i)=>`<img src="${img(n)}" alt="${VNAME[v]||""} ${p.name}, görsel ${i+1}" ${i?'loading="lazy"':'fetchpriority="high"'}>`).join("")}</div>
+        ${imgs.length>1?`<div class="gdots">${imgs.map((_,i)=>`<button type="button" data-slide="${i}" aria-label="Görsel ${i+1}" aria-current="${i===0}"></button>`).join("")}</div>
+        <div class="thumbs">${imgs.map((n,i)=>`<button type="button" data-slide="${i}" aria-label="Görsel ${i+1}" aria-current="${i===0}"><img src="${img(n)}" alt=""></button>`).join("")}</div>`:""}
+      </div>
+      <div class="pinfo">
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">${p.type==="diy"?"Kendin yap kiti":"Hazır çiçek"}</div>
+          <h1>${vs.length>1?VNAME[v]+" ":""}${p.name}</h1>
+        </div>
+        <p class="lead">${p.lead}</p>
+        <div class="pprice"><span class="price">${p.price?tl(p.price):"Fiyat ikas'tan gelecek"}</span>${p.old?`<span class="old">${tl(p.old)}</span><span class="save">${tl(p.old-p.price)} indirim</span>`:""}</div>
+        ${vs.length>1?`<div><div class="opt-label">Renk: <span>${VNAME[v]}</span></div><div class="swatches">${vs.map(k=>`<button class="sw" type="button" data-v="${k}" aria-pressed="${k===v}" aria-label="${VNAME[k]}" title="${VNAME[k]}" style="background:${COLORS[k]||"#ddd"}"></button>`).join("")}</div></div>`:""}
+        <div class="gift">
+          <label><input type="checkbox" id="gift-on"> Hediye notu ekle <span style="color:var(--ink-2);font-weight:400">(ücretsiz)</span></label>
+          <div id="gift-box" hidden><textarea id="gift-text" maxlength="160" placeholder="Örn: İyi ki doğdun, solmayan bir buket senin için."></textarea><div class="cnt"><span id="gift-cnt">0</span>/160</div></div>
+        </div>
+        <div class="qtyrow">
+          <div class="qty"><button type="button" id="q-minus" aria-label="Azalt">−</button><output id="q-val">${state.qty}</output><button type="button" id="q-plus" aria-label="Artır">+</button></div>
+          <button class="btn btn-primary" type="button" id="add-main" ${p.price?"":"disabled"}>Sepete ekle</button>
+        </div>
+        <div class="ship">
+          <div class="line"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span><b>Ertesi iş günü kargoda.</b> Türkiye'nin her yerine gönderilir.</span></div>
+          <div class="line"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></svg><span>14 gün içinde kolay iade ve değişim</span></div>
+          <div style="display:grid;gap:6px"><span id="pdp-free"></span><div class="bar"><i id="pdp-bar"></i></div></div>
+        </div>
+        <div class="note"><b>Neden böyle:</b> Fiyat, renk, hediye notu ve kargo bilgisi telefonda ilk ekranda görünüyor. Aşağı kaydırınca alttaki "Sepete ekle" çubuğu açılıyor.</div>
+        ${p.hl?`<div class="highlights">${p.hl.map(([a,b])=>`<div class="hl"><b>${a}</b>${b}</div>`).join("")}</div>`:""}
+        ${p.box?`<div class="box"><h3>Kutunun içinde</h3><ul>${p.box.map(([a,b])=>`<li><span>${a}</span><span>${b}</span></li>`).join("")}</ul></div>`:""}
+        <div class="faq">
+          <details open><summary>Ürün hakkında</summary><p>${p.type==="diy"?"Kendi ellerinizle sevdiklerinize solmayacak bir buket yapın. Kutudaki QR koddan açılan video anlatımla adım adım ilerlersiniz. Hem bir hobi aktivitesi hem de el emeği bir hediye.":"Dükkânımızda elde hazırlanır, korumalı paketle gönderilir. Solmaz, su ve bakım istemez."}</p></details>
+          <details><summary>Ölçüler</summary><p>${p.type==="diy"?"Kutudaki ana malzemeler 30 cm uzunluğundadır. Bitmiş buket ortalama 45 cm boy ve 20 cm en olur.":"Ölçü bilgisi ürün kartından gelir."}</p></details>
+          <details><summary>El yapımı hakkında</summary><p>El yapımı üretim nedeniyle çiçek formu, sarım ve bağlama detaylarında küçük farklılıklar olabilir. Renkler ekran ayarlarına göre hafif ton farkı gösterebilir.</p></details>
+          <details><summary>Kargo ve iade</summary><p>Siparişiniz ertesi iş günü kargoya verilir. 1.500 TL üzeri siparişlerde kargo ücretsizdir. 14 gün içinde iade ya da değişim yapabilirsiniz.</p></details>
+        </div>
+      </div>
+    </div>
+
+    ${p.type==="diy"?`<section class="blk">
+      <div class="sec-head"><div><div class="eyebrow">Adım adım</div><h2>Yaparken böyle görünüyor</h2></div></div>
+      <div class="made">
+        <figure><img loading="lazy" src="img/kit-pembe-3.jpg" alt="Şönil telin kıvrılıp çiçek yaprağına dönüştüğü adımlar"><figcaption>Şönili kıvırıp yaprak yapın</figcaption></figure>
+        <figure><img loading="lazy" src="img/kit-mavi.jpg" alt="Mavi şönil yapraklarının bantla birleştirilmesi"><figcaption>Yaprakları bantla birleştirin</figcaption></figure>
+        <figure><img loading="lazy" src="img/papatya-kit.jpg" alt="Masada şönil çiçek yapan bir kadın"><figcaption>Kendi hızınızda, keyifle</figcaption></figure>
+      </div>
+    </section>`:""}
+
+    <section class="blk">
+      <div class="sec-head"><div><div class="eyebrow">Bunlar da hoşunuza gidebilir</div><h2>Birlikte bakılanlar</h2></div></div>
+      <div class="rail">${others.map(k=>card(k)).join("")}</div>
+    </section>
+  </div>`;
+}
+
+const app=document.getElementById("app");
+let page="home";
+function render(to,jump){
+  page=to==="home"?"home":"product";
+  document.body.classList.toggle("pg-product",page==="product");
+  document.querySelectorAll(".proto [data-go]").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.go==="home")===(page==="home"))));
+  app.innerHTML=page==="home"?home():product();
+  closeMenu();
+  if(jump){const el=document.getElementById(jump);if(el){const y=el.getBoundingClientRect().top+scrollY-80;scrollTo({top:y,behavior:"smooth"});return}}
+  scrollTo({top:0});
+  if(page==="product"){bindProduct();updateFree()}
+}
+function bindProduct(){
+  const slides=document.getElementById("slides");
+  const mark=i=>document.querySelectorAll("[data-slide]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.slide===i)));
+  slides.addEventListener("scroll",()=>{mark(Math.round(slides.scrollLeft/slides.clientWidth))},{passive:true});
+  const on=document.getElementById("gift-on"),box=document.getElementById("gift-box"),t=document.getElementById("gift-text");
+  on.addEventListener("change",()=>{box.hidden=!on.checked;if(on.checked)t.focus()});
+  t.addEventListener("input",()=>{document.getElementById("gift-cnt").textContent=t.value.length});
+  const p=P[state.id];
+  document.getElementById("sb-name").textContent=(Object.keys(p.variants).length>1?VNAME[state.v]+" ":"")+p.name;
+  document.getElementById("sb-price").textContent=p.price?tl(p.price):"—";
+}
+function openProduct(id,v){state={id,v:v||Object.keys(P[id].variants)[0],qty:1};try{history.replaceState(null,"","#p-"+id)}catch(e){}render("product")}
+
+function add(id,v,qty=1,note=""){
+  const p=P[id];if(!p.price)return;
+  const key=id+"|"+v+"|"+note;const ex=cart.find(c=>c.key===key);
+  if(ex)ex.qty+=qty;else cart.push({key,id,v,qty,note});
+  save();updateCart();toast(`Sepete eklendi · ${tl(cartTotal())}`);
+}
+const cartTotal=()=>cart.reduce((s,c)=>s+P[c.id].price*c.qty,0);
+function freeMsg(t){const r=FREE-t;return r>0?`Ücretsiz kargoya <b>${tl(r)}</b> kaldı`:`<b>Kargonuz ücretsiz.</b>`}
+function updateFree(){
+  const t=cartTotal(),pct=Math.min(100,t/FREE*100)+"%";
+  const a=document.getElementById("pdp-free");if(a){a.innerHTML=t?freeMsg(t):"1.500 TL üzeri siparişlerde kargo ücretsiz";document.getElementById("pdp-bar").style.width=pct}
+  document.getElementById("free-msg").innerHTML=freeMsg(t);document.getElementById("free-bar").style.width=pct;
+}
+function updateCart(){
+  const n=cart.reduce((s,c)=>s+c.qty,0);const b=document.getElementById("cart-badge");b.textContent=n;b.dataset.n=n;
+  const list=document.getElementById("ditems");
+  list.innerHTML=cart.length?cart.map((c,i)=>{const p=P[c.id];return `<div class="ditem"><img src="${img(p.variants[c.v][0])}" alt=""><div><div class="n">${Object.keys(p.variants).length>1?VNAME[c.v]+" ":""}${p.name}</div><div class="m">Adet: ${c.qty}</div>${c.note?`<div class="gn">Not: “${c.note.replace(/</g,"&lt;")}”</div>`:""}<button class="rm" type="button" data-rm="${i}">Kaldır</button></div><b class="price">${tl(p.price*c.qty)}</b></div>`}).join(""):`<div class="empty"><span class="script">Sepetiniz boş</span><p>Solmayan bir sürpriz seçmeye ne dersiniz?</p><button class="btn btn-ghost" type="button" data-close-cart>Alışverişe dön</button></div>`;
+  document.getElementById("dtotal").textContent=tl(cartTotal());
+  updateFree();
+}
+let tt;function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),1800)}
+const drawer=document.getElementById("drawer"),menu=document.getElementById("menu");
+function openCart(){drawer.classList.add("open");drawer.setAttribute("aria-hidden","false")}
+function closeCart(){drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
+function closeMenu(){menu.classList.remove("open");menu.setAttribute("aria-hidden","true")}
+
+document.addEventListener("click",e=>{
+  const t=e.target;
+  const addB=t.closest("[data-add]");if(addB){e.stopPropagation();add(addB.dataset.add,addB.dataset.v);return}
+  const rm=t.closest("[data-rm]");if(rm){cart.splice(+rm.dataset.rm,1);save();updateCart();return}
+  if(t.closest("[data-close-cart]")){closeCart();return}
+  if(t.closest("[data-close-menu]")){closeMenu();return}
+  const sw=t.closest(".sw");if(sw){state.v=sw.dataset.v;state.qty=1;const y=scrollY;app.innerHTML=product();bindProduct();updateFree();scrollTo({top:y});return}
+  const sl=t.closest("[data-slide]");if(sl){const s=document.getElementById("slides");s.scrollTo({left:s.clientWidth*+sl.dataset.slide,behavior:"smooth"});document.querySelectorAll("[data-slide]").forEach(b=>b.setAttribute("aria-current",String(b.dataset.slide===sl.dataset.slide)));return}
+  const op=t.closest("[data-open]");if(op){openProduct(op.dataset.open,op.dataset.v);return}
+  const go=t.closest("[data-go]");if(go){e.preventDefault();const g=go.dataset.go;if(g==="home")render("home",go.dataset.jump);else openProduct(g.replace(/^p-/,""));return}
+  const chip=t.closest(".chip");if(chip){chip.parentElement.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c===chip)));return}
+  if(t.closest("#q-minus")){state.qty=Math.max(1,state.qty-1);document.getElementById("q-val").textContent=state.qty;return}
+  if(t.closest("#q-plus")){state.qty=Math.min(20,state.qty+1);document.getElementById("q-val").textContent=state.qty;return}
+  if(t.closest("#add-main")||t.closest("#sb-add")){const on=document.getElementById("gift-on");const note=on&&on.checked?document.getElementById("gift-text").value.trim():"";add(state.id,state.v,state.qty,note);return}
+  if(t.closest("#cart-open")){openCart();return}
+  if(t.closest("#menu-open")){menu.classList.add("open");menu.setAttribute("aria-hidden","false");return}
+  if(t.closest("#checkout")){toast("Taslak: burada ikas ödeme sayfası açılır");return}
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){closeCart();closeMenu()}
+  if(e.key==="Enter"&&e.target.matches(".card")){openProduct(e.target.dataset.open,e.target.dataset.v)}
+});
+document.getElementById("notes-toggle").addEventListener("change",e=>{document.body.classList.toggle("show-notes",e.target.checked);try{localStorage.setItem("bee-notes",e.target.checked?"1":"0")}catch(_){}} );
+try{if(localStorage.getItem("bee-notes")==="1"){document.getElementById("notes-toggle").checked=true;document.body.classList.add("show-notes")}}catch(e){}
+document.getElementById("news-form").addEventListener("submit",e=>{e.preventDefault();document.getElementById("news-ok").hidden=false});
+const sb=document.getElementById("sticky-buy");
+addEventListener("scroll",()=>{if(page!=="product")return;const a=document.getElementById("add-main");if(!a)return;sb.classList.toggle("on",a.getBoundingClientRect().bottom<0)},{passive:true});
+
+const h=location.hash.replace("#","");
+if(h.startsWith("p-")&&P[h.slice(2)])openProduct(h.slice(2));else render("home");
+updateCart();
+</script>

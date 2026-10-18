@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "taslak",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5173", "-d", "taslak"],
+      "port": 5173
+    }
+  ]
+}
