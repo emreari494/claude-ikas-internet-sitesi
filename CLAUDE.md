@@ -57,6 +57,15 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
   - Sepet çekmecesi, menü çalışır. "Tasarım notları" anahtarı her bölümün gerekçesini gösterir.
   - **Yorumlar örnek** (gerçek Trendyol yorumlarıyla değişecek). "Sevgilinle Yap" fiyatı bilinmiyor.
 - [x] ikas partner hesabı açıldı (kullanıcı, 19 Ekim 2026).
+- [x] Taslak revizyonu 1 (20 Ekim 2026): ana sayfa yeni sırası, setler, özel günler, çapraz satış, sepette öneri, Atölye dokunuşları (arı, şönil ayraç, rozetler).
+
+## Alınan kararlar (20 Ekim 2026)
+
+- **Satış stratejisi: "kitle çek, hazıra yönlendir."** Satışların çoğu kitten, kârın çoğu hazır çiçekten. Kit öne çıkar; hazır çiçek hemen ardından aynı güçte durur. Kit ↔ hazır köprüleri (ürün sayfası kutusu, sepette öneri, ücretsiz kargo eşiği, setler, özel gün sayfaları) bu yüzden var.
+- **Tema yönü: "Atölye".** Sıcak el işi atölyesi hissi; kit sitelerinin samimiyeti tüm siteye. Arı motifi, şönil tel gibi kıvrımlı ayraç, "El yapımı / Solmaz / QR video" rozetleri, Allura sadece 1–2 yerde. Fotoğraf dili: hazır ürün ev ortamında, kit kutu içeriği ve eller.
+- **Site yapısı:** Ana sayfa uzun ve bölümlü (menü bölümlere kaydırır); ürün, kategori, sepet ayrı adreslerde (Google, paylaşım, reklam için).
+- **Görseller:** Kullanıcı ürün fotoğraflarını elden geçirip kendisi yükleyecek. Yeni bölümlerde ürün fotoğrafı eklenmez; "Görsel gelecek" kutusu ve ne çekileceği notu konur.
+- Örnek ilham siteleri: The Woobles, LEGO Botanicals, Hawthorn Handmade, Bloom & Wild, Afloral. Kullanıcı en çok kit sitelerini sevdi.
 
 ## Sıradaki adımlar
 
@@ -68,6 +77,7 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
    - ikas tema geliştirme **beta**; canlıya geçmeden her şey test mağazasında denenir, eski tema yedek kalır.
 4. Taslaktaki bölümler ikas bileşenlerine (Next.js + TypeScript + MobX) dönüştürülecek: önce ana sayfa, sonra ürün, kategori, sepet.
 5. Açık işler: yazısız "bitmiş buket" fotoğrafları, gerçek yorumlar, kargo süresi teyidi, renkleri varyanta toplama (ikas Admin API ile mümkün).
+6. Taslaktaki örnekler teyit bekliyor: set içerikleri ve set fiyatı, hazır ürünlerde "~2 saat el emeği" süresi, öne çıkacak özel günler.
 
 ## Klasörler
 

@@ -277,8 +277,54 @@ body.pg-product .wa{display:none}
 .toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:80;background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:13px;transition:.25s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* Atölye dokunuşları: görsel yeri, şönil ayraç, arı, rozetler */
+.ph{display:grid;place-content:center;gap:4px;text-align:center;width:100%;height:100%;padding:8px;background:repeating-linear-gradient(135deg,var(--sage-soft) 0 10px,#F3F2E6 10px 20px);border:1px dashed var(--olive);border-radius:12px;color:var(--olive)}
+.ph span{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.ph small{font-size:11px;line-height:1.3;color:var(--ink-2)}
+.divider{display:flex;align-items:center;gap:12px;max-width:420px;margin:44px auto 0;padding-inline:var(--gut)}
+.divider i{flex:1;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M0 5q6-5 12 0t12 0' fill='none' stroke='%23EB90A5' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center/24px 10px}
+.bee{width:32px;height:24px;flex:none}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badges span{font-size:11px;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:var(--sage-soft);color:#4a4a2c}
+.sec-lead{color:var(--ink-2);font-size:14px;margin-top:6px}
+
+/* Setler */
+.sets{display:grid;gap:14px}
+.set{display:grid;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 16px}
+.set .ph{aspect-ratio:4/3}
+.set h3{font-size:22px}
+.set p{font-size:13.5px;color:var(--ink-2)}
+.set .row{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:13px}
+
+/* Özel günler */
+.occ{display:grid;gap:10px;margin-top:24px}
+.occ a{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:center;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px;cursor:pointer}
+.occ .ph{aspect-ratio:1;padding:4px}
+.occ .ph span{display:none}
+.occ .ph small{font-size:10px}
+.occ b{display:block;font-family:var(--f-display);font-size:18px;font-weight:500}
+.occ small{font-size:12px;color:var(--ink-2)}
+
+/* Çapraz satış (ürün sayfası) */
+.cross{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;background:var(--blush);border-radius:12px;padding:12px}
+.cross .ph{aspect-ratio:4/5;padding:4px}
+.cross .eyebrow{color:var(--rose-deep)}
+.cross b{display:block;font-family:var(--f-display);font-size:18px;font-weight:500;margin:2px 0 6px}
+.cross .price{white-space:nowrap}
+.cross button{background:none;border:0;padding:0;color:var(--rose);font-weight:600;font-size:13px;text-decoration:underline}
+
+/* Sepette öneri */
+.upsell{padding:12px var(--gut);border-top:1px solid var(--line);background:var(--blush);display:grid;gap:8px;font-size:13px}
+.upsell .u{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center}
+.upsell .ph{width:44px;height:54px;padding:0;border-radius:8px}
+.upsell .ph span{display:none}
+.empty .bee{width:48px;height:36px}
+.upsell .u button{border:1px solid var(--rose);background:var(--paper);color:var(--rose);border-radius:999px;font-size:12px;font-weight:600;padding:6px 12px}
+
 /* Geniş ekran */
 @media (min-width:768px){
+  .sets{grid-template-columns:1fr 1fr}
+  .occ{grid-template-columns:repeat(3,1fr)}
   :root{--gut:28px}
   .announce .d{display:inline}
   .hero{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;max-width:1180px;margin-inline:auto;padding:32px var(--gut) 0;gap:48px}
@@ -342,9 +388,9 @@ body.pg-product .wa{display:none}
     <a class="logo" data-go="home" href="#home" aria-label="Bee Flower Shop ana sayfa"><img src="img/logo.png" alt="Bee Flowers – Handmade Floral Design" width="520" height="347"></a>
     <div class="hdr-r">
       <nav class="desk-nav" aria-label="Ana menü">
-        <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
         <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
-        <a data-go="home" data-jump="birlikte">Birlikte Yap</a>
+        <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
+        <a data-go="home" data-jump="setler">Setler</a>
         <a data-go="home" data-jump="kime">Kime Hediye?</a>
       </nav>
       <button class="icon-btn" type="button" aria-label="Ara"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
@@ -358,9 +404,10 @@ body.pg-product .wa{display:none}
   <div class="panel" role="dialog" aria-label="Menü">
     <button class="icon-btn" type="button" data-close-menu aria-label="Menüyü kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <h4>Alışveriş</h4>
-    <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
     <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
-    <a data-go="home" data-jump="birlikte">Birlikte Yap Setleri</a>
+    <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
+    <a data-go="home" data-jump="setler">Setler</a>
+    <a data-go="home" data-jump="birlikte">Birlikte Yap</a>
     <h4>Kime hediye?</h4>
     <a data-go="home" data-jump="kime">Sevgiliye</a>
     <a data-go="home" data-jump="kime">Anneye</a>
@@ -415,6 +462,7 @@ body.pg-product .wa{display:none}
     <div class="dh"><h2>Sepetiniz</h2><button class="icon-btn" type="button" data-close-cart aria-label="Sepeti kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <div class="dfree"><span id="free-msg"></span><div class="bar"><i id="free-bar" style="width:0"></i></div></div>
     <div class="ditems" id="ditems"></div>
+    <div class="upsell" id="upsell" hidden></div>
     <div class="dfoot">
       <div class="tot"><span>Ara toplam</span><b class="price" id="dtotal">0 TL</b></div>
       <button class="btn btn-primary" type="button" id="checkout">Güvenli ödemeye geç</button>
@@ -440,6 +488,16 @@ const P={
   "mini-saksi":{name:"Lilyum Mini Saksı",type:"ready",cat:"Hazır Çiçekler",price:450,lead:"Beyaz mini saksıda hazır şönil çiçek. Yaklaşık 18 cm.",variants:{sari:["saksi-sari"],lacivert:["saksi-lacivert"],beyaz:["saksi-papatya"]}}
 };
 const VNAME={pembe:"Pembe",mavi:"Mavi",lila:"Lila",sari:"Sarı",kirmizi:"Kırmızı",beyaz:"Beyaz",mor:"Mor",lacivert:"Lacivert","mavi-pembe":"Mavi + Pembe"};
+// Kitten hazıra, hazırdan kite köprü: her ürünün karşı taraftaki eşi
+const CROSS={"lilyum-kit":"lilyum-tekli","papatya-kit":"mini-saksi","birlikte":"mini-saksi","lilyum-tekli":"lilyum-kit","lale":"lilyum-kit","mini-saksi":"papatya-kit"};
+// Örnek setler: fiyat ve içerik kullanıcıdan teyit bekliyor
+const SETS=[
+  {name:"Birini yap, birini hediye et",items:[["lilyum-kit","pembe"],["mini-saksi","sari"]],desc:"Lilyum buket kiti + hazır lilyum mini saksı. Buketi siz yapın, saksıyı hemen hediye edin.",ph:"Kit kutusu ve mini saksı yan yana"},
+  {name:"Tek çiçekle başla",items:[["lale","pembe"],["papatya-kit","pembe"]],desc:"Hazır tekli lale + papatya yapım kiti. Küçük bir teşekkür ve bir akşam aktivitesi.",ph:"Tekli lale ve papatya kiti, masada"}
+];
+const BEE=`<svg class="bee" viewBox="0 0 32 24" aria-hidden="true"><ellipse cx="13" cy="7" rx="5" ry="4" transform="rotate(-20 13 7)" fill="#FFFDF9" stroke="#8C846A" stroke-width="1.2"/><ellipse cx="19" cy="7" rx="5" ry="4" transform="rotate(20 19 7)" fill="#FFFDF9" stroke="#8C846A" stroke-width="1.2"/><ellipse cx="16" cy="15" rx="9" ry="6.5" fill="#EAC26C"/><path d="M13 10v10M18 9.5v11" stroke="#0E0C0B" stroke-width="2"/><circle cx="23" cy="13.5" r="1" fill="#0E0C0B"/></svg>`;
+const DIVIDER=`<div class="divider" aria-hidden="true"><i></i>${BEE}<i></i></div>`;
+const ph=label=>`<div class="ph"><span>Görsel gelecek</span>${label?`<small>${label}</small>`:""}</div>`;
 const img=n=>`img/${n}.jpg`;
 const tl=n=>n==null?"—":n.toLocaleString("tr-TR")+" TL";
 let cart=[];try{cart=JSON.parse(localStorage.getItem("bee-cart")||"[]")}catch(e){}
@@ -465,12 +523,12 @@ function home(){
     <div class="hero-copy">
       <span class="script">Bugün sürpriz, hep hatıra</span>
       <h1>Solmayan çiçekler, <em>elle</em> yapılmış hediyeler.</h1>
-      <p>Şönil çiçeklerimizi dükkânımızda tek tek elde hazırlıyoruz. İster hazır gönderin, ister kitle birlikte yapın.</p>
+      <p>Kitle kendi buketinizi yapın ya da biz sizin için yapıp gönderelim. Her parça dükkânımızda elde hazırlanır.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" data-go="home" data-jump="hazir-cicekler">Hazır çiçekler</a>
-        <a class="btn btn-ghost" data-go="home" data-jump="kitler">Kendin yap kitleri</a>
+        <a class="btn btn-primary" data-go="home" data-jump="kitler">Kendin yap kitleri</a>
+        <a class="btn btn-ghost" data-go="home" data-jump="hazir-cicekler">Hazırını gönderelim</a>
       </div>
-      <div class="note"><b>Neden böyle:</b> İlk ekran iki ürün ailesini hemen ayırıyor. Hero fotoğrafı yazısız ve yaşam alanında; Trendyol kapakları burada kullanılmıyor.</div>
+      <div class="note"><b>Neden böyle:</b> Müşterilerin çoğu kit için geliyor; ilk buton kit. Hazır çiçek daha çok kâr bırakıyor; ikinci buton aynı ekranda ve "biz sizin için yaparız" diliyle ona yönlendiriyor.</div>
     </div>
   </section>
 
@@ -484,21 +542,12 @@ function home(){
   <section class="blk wrap">
     <div class="sec-head"><div><div class="eyebrow">İki yol, iki hediye</div><h2>Nasıl hediye etmek istersiniz?</h2></div></div>
     <div class="paths">
-      <a class="path" data-go="home" data-jump="hazir-cicekler"><img loading="lazy" src="img/hazir.jpg" alt="Turuncu çanta aranjmanında şönil lilyum ve güller"><div class="t"><span>Hazır gönder</span><h3>Hazır çiçekler</h3><p>Buket, saksı, sepet ve tekli çiçekler. Paketli gelir.</p></div></a>
-      <a class="path" data-go="home" data-jump="kitler"><img loading="lazy" src="img/diy.jpg" alt="Şönil telle lilyum yapılırken eller ve QR kodlu anlatım kartı"><div class="t"><span>Birlikte yap</span><h3>Kendin yap kitleri</h3><p>Kutudan bir buket çıkar. QR'ı okutun, videoyla yapın.</p></div></a>
+      <a class="path" data-go="home" data-jump="kitler"><img loading="lazy" src="img/diy.jpg" alt="Şönil telle lilyum yapılırken eller ve QR kodlu anlatım kartı"><div class="t"><span>Siz yapın, biz anlatalım</span><h3>Kendin yap kitleri</h3><p>Kutudan bir buket çıkar. QR'ı okutun, videoyla yapın.</p></div></a>
+      <a class="path" data-go="home" data-jump="hazir-cicekler"><img loading="lazy" src="img/hazir.jpg" alt="Turuncu çanta aranjmanında şönil lilyum ve güller"><div class="t"><span>Biz sizin için yaptık</span><h3>Hazır çiçekler</h3><p>Buket, saksı, sepet ve tekli çiçekler. Paketli gelir.</p></div></a>
     </div>
   </section>
 
-  <section class="blk wrap" id="kime">
-    <div class="sec-head"><div><div class="eyebrow">Kime hediye?</div><h2>Kimi mutlu edeceksiniz?</h2></div></div>
-    <div class="chips" role="group" aria-label="Kime hediye">
-      ${["Sevgiliye","Anneye","Arkadaşa","Kendine","Öğretmene","Yeni eve"].map((c,i)=>`<button class="chip" type="button" aria-pressed="${i===0}">${c}</button>`).join("")}
-    </div>
-    <div class="rail" id="kime-rail" style="margin-top:16px">
-      ${card("lilyum-kit","pembe",{})}${card("birlikte")}${card("lilyum-tekli")}${card("lale","pembe")}
-    </div>
-    <div class="note"><b>Neden böyle:</b> Hediye alan kişi ürünü değil, karşısındaki kişiyi düşünerek gelir. Bu filtre ikas'ta etiketlerle çalışır. Her ürüne "sevgiliye, anneye…" etiketi eklenir.</div>
-  </section>
+  ${DIVIDER}
 
   <section class="blk wrap" id="kitler">
     <div class="sec-head"><div><div class="eyebrow">Çok satanlar</div><h2>Kendin yap kitleri</h2></div><a data-go="home" data-jump="kitler">Tümü →</a></div>
@@ -519,6 +568,39 @@ function home(){
     </div>
   </section>
 
+  <section class="blk wrap" id="hazir-cicekler">
+    <div class="sec-head"><div><div class="eyebrow">Vaktiniz yok mu?</div><h2>Hazırını biz yapıp gönderelim</h2><p class="sec-lead">Aynı masada, aynı özenle elde yapılır. Paketli ve hediye notuyla gelir.</p></div><a data-go="home" data-jump="hazir-cicekler">Tümü →</a></div>
+    <div class="cats" style="margin-block:8px 28px">
+      ${[["cat-buket","Buketler"],["saksi-papatya","Mini saksılar"],["cat-sepet","Sepetler"],["cat-vazo","Vazolar"],["cat-canta","Çanta aranjman"],["cat-tekli","Tekli çiçekler"]].map(([i,t])=>`<a class="cat"><img loading="lazy" src="img/${i}.jpg" alt="">${t}</a>`).join("")}
+    </div>
+    <div class="grid">
+      ${card("lilyum-tekli",null,{tag:"Yeni"})}${card("mini-saksi","sari")}${card("lale","mor")}${card("mini-saksi","lacivert")}
+    </div>
+    <div class="note"><b>Neden böyle:</b> Kit en çok satan, hazır çiçek en çok kâr bırakan. Hazır çiçekler, kit anlatımının hemen ardından ve kitle aynı güçte bir bölümde duruyor. Böylece kite bakan müşteri "hazırı da var" diye görüyor.</div>
+  </section>
+
+  <section class="blk wrap" id="setler">
+    <div class="sec-head"><div><div class="eyebrow">Örnek setler</div><h2>Kit + hazır çiçek setleri</h2><p class="sec-lead">Biri yapmak için, biri hemen hediye etmek için. Tek pakette.</p></div></div>
+    <div class="sets">
+      ${SETS.map((x,i)=>{const sum=x.items.reduce((t,[id])=>t+P[id].price,0);return `<div class="set">${ph(x.ph)}<div class="eyebrow">Örnek set</div><h3>${x.name}</h3><p>${x.desc}</p><div class="row"><span>Ayrı ayrı <b class="price">${tl(sum)}</b></span><span style="color:var(--rose-deep)">Set fiyatı belirlenecek</span></div><button class="btn btn-primary" type="button" data-set="${i}">İkisini sepete ekle</button></div>`}).join("")}
+    </div>
+    <div class="note"><b>Yapılacak:</b> Setler örnek. Hangi ürünlerin birlikte satılacağı ve set indirimi sizden. Set, kit alan müşteriyi hazır çiçeğe taşımanın en doğal yolu. ikas'ta "paket ürün" olarak kurulur.</div>
+  </section>
+
+  <section class="blk wrap" id="kime">
+    <div class="sec-head"><div><div class="eyebrow">Kime hediye?</div><h2>Kimi mutlu edeceksiniz?</h2></div></div>
+    <div class="chips" role="group" aria-label="Kime hediye">
+      ${["Sevgiliye","Anneye","Arkadaşa","Kendine","Öğretmene","Yeni eve"].map((c,i)=>`<button class="chip" type="button" aria-pressed="${i===0}">${c}</button>`).join("")}
+    </div>
+    <div class="rail" id="kime-rail" style="margin-top:16px">
+      ${card("lilyum-kit","pembe",{})}${card("birlikte")}${card("lilyum-tekli")}${card("lale","pembe")}
+    </div>
+    <div class="occ">
+      ${[["Sevgililer Günü","14 Şubat · hazır buketler","Kırmızı lilyum buket, hediye paketinde"],["Anneler Günü","Mayıs · saksı ve sepetler","Mini saksı, anneye hediye sahnesi"],["Doğum günü","Her gün · notlu hediyeler","Hediye kutusu açılırken çiçek"]].map(([t,s,l])=>`<a data-go="home" data-jump="hazir-cicekler">${ph(l)}<span><b>${t}</b><small>${s}</small></span></a>`).join("")}
+    </div>
+    <div class="note"><b>Neden böyle:</b> Hediye alan kişi ürünü değil, karşısındaki kişiyi düşünerek gelir. Bu filtre ikas'ta etiketlerle çalışır. Özel günlerde insanlar vakit değil hazır hediye ister; bu kartlar hazır çiçeğe yönlendirir. <b>Yapılacak:</b> Hangi özel günler öne çıksın, teyit edilecek.</div>
+  </section>
+
   <section class="blk wrap" id="birlikte">
     <div class="together">
       <img loading="lazy" src="img/birlikte.jpg" alt="Bir çift masada mavi ve pembe şönil buketlerini birlikte yapıyor">
@@ -535,16 +617,7 @@ function home(){
     </div>
   </section>
 
-  <section class="blk wrap" id="hazir-cicekler">
-    <div class="sec-head"><div><div class="eyebrow">Paketli, hazır gönderilir</div><h2>Hazır çiçekler</h2></div><a data-go="home" data-jump="hazir-cicekler">Tümü →</a></div>
-    <div class="cats" style="margin-bottom:28px">
-      ${[["cat-buket","Buketler"],["saksi-papatya","Mini saksılar"],["cat-sepet","Sepetler"],["cat-vazo","Vazolar"],["cat-canta","Çanta aranjman"],["cat-tekli","Tekli çiçekler"]].map(([i,t])=>`<a class="cat"><img loading="lazy" src="img/${i}.jpg" alt="">${t}</a>`).join("")}
-    </div>
-    <div class="grid">
-      ${card("lilyum-tekli",null,{tag:"Yeni"})}${card("mini-saksi","sari")}${card("lale","mor")}${card("mini-saksi","lacivert")}
-    </div>
-  </section>
-
+  ${DIVIDER}
   <section class="blk wrap">
     <div class="sec-head"><div><div class="eyebrow">Müşterilerimiz anlatıyor</div><h2>Hediyeyi alanlar ne dedi?</h2></div></div>
     <div class="reviews">
@@ -559,7 +632,8 @@ function home(){
     <div class="story">
       <img loading="lazy" src="img/hikaye.jpg" alt="Dükkânda elde hazırlanmış pembe şönil buket">
       <div>
-        <span class="script">Bee Flower Shop</span>
+        <div class="eyebrow">Atölyemizden</div>
+        <span class="script">Sevgiyle yapıldı</span>
         <h2>Her çiçek, küçük dükkânımızda elde şekillenir.</h2>
         <p>Şönil teli renk renk ayırıyor, her kiti tek tek sayıp paketliyoruz. Hazır çiçeklerimizi de aynı masada elle büküyoruz.</p>
         <p>El yapımı olduğu için iki çiçek hiçbir zaman birebir aynı olmaz. Biz bunu bir kusur olarak görmüyoruz.</p>
@@ -583,6 +657,9 @@ function product(){
   const p=P[state.id];const v=state.v;const imgs=p.variants[v];
   const vs=Object.keys(p.variants);
   const others=Object.keys(P).filter(k=>k!==state.id&&P[k].price).slice(0,4);
+  const hl=p.hl||(p.type==="ready"?[["~2 saat","el emeği (örnek)"],["Solmaz","su ve bakım istemez"],["Paketli","hediyeye hazır gelir"],["Ücretsiz not","mesajınızı yazın"]]:null);
+  const x=P[CROSS[state.id]];
+  const cross=x?`<div class="cross">${ph(x.type==="diy"?"Kit kutusu":"Hazır ürün")}<div><div class="eyebrow">${p.type==="diy"?"Vaktiniz yok mu?":"Bunu kendiniz yapın"}</div><b>${p.type==="diy"?"Hazırını gönderelim":"Kendin yap kiti var"}</b><span style="font-size:13px">${x.name} · <span class="price">${tl(x.price)}</span></span><br><button type="button" data-open="${CROSS[state.id]}">Ürüne bakın →</button></div></div>`:"";
   return `
   <div class="wrap">
     <nav class="crumb" aria-label="Konum"><a data-go="home">Ana sayfa</a><span>/</span><a data-go="home" data-jump="${p.type==="diy"?"kitler":"hazir-cicekler"}">${p.cat}</a><span>/</span><span>${p.name}</span></nav>
@@ -596,6 +673,7 @@ function product(){
         <div>
           <div class="eyebrow" style="margin-bottom:8px">${p.type==="diy"?"Kendin yap kiti":"Hazır çiçek"}</div>
           <h1>${vs.length>1?VNAME[v]+" ":""}${p.name}</h1>
+          <div class="badges" style="margin-top:10px"><span>El yapımı</span><span>Solmaz</span>${p.type==="diy"?"<span>QR video anlatımlı</span>":"<span>Hediye paketli</span>"}</div>
         </div>
         <p class="lead">${p.lead}</p>
         <div class="pprice"><span class="price">${p.price?tl(p.price):"Fiyat ikas'tan gelecek"}</span>${p.old?`<span class="old">${tl(p.old)}</span><span class="save">${tl(p.old-p.price)} indirim</span>`:""}</div>
@@ -614,7 +692,9 @@ function product(){
           <div style="display:grid;gap:6px"><span id="pdp-free"></span><div class="bar"><i id="pdp-bar"></i></div></div>
         </div>
         <div class="note"><b>Neden böyle:</b> Fiyat, renk, hediye notu ve kargo bilgisi telefonda ilk ekranda görünüyor. Aşağı kaydırınca alttaki "Sepete ekle" çubuğu açılıyor.</div>
-        ${p.hl?`<div class="highlights">${p.hl.map(([a,b])=>`<div class="hl"><b>${a}</b>${b}</div>`).join("")}</div>`:""}
+        ${cross}
+        <div class="note"><b>Neden böyle:</b> Kit ve hazır çiçek birbirine köprü kuruyor. Kite bakana "hazırını gönderelim", hazıra bakana "kendiniz yapın" deniyor. Görsel yeri boş; fotoğraflar hazırlanınca dolacak.</div>
+        ${hl?`<div class="highlights">${hl.map(([a,b])=>`<div class="hl"><b>${a}</b>${b}</div>`).join("")}</div>`:""}
         ${p.box?`<div class="box"><h3>Kutunun içinde</h3><ul>${p.box.map(([a,b])=>`<li><span>${a}</span><span>${b}</span></li>`).join("")}</ul></div>`:""}
         <div class="faq">
           <details open><summary>Ürün hakkında</summary><p>${p.type==="diy"?"Kendi ellerinizle sevdiklerinize solmayacak bir buket yapın. Kutudaki QR koddan açılan video anlatımla adım adım ilerlersiniz. Hem bir hobi aktivitesi hem de el emeği bir hediye.":"Dükkânımızda elde hazırlanır, korumalı paketle gönderilir. Solmaz, su ve bakım istemez."}</p></details>
@@ -682,9 +762,18 @@ function updateFree(){
 function updateCart(){
   const n=cart.reduce((s,c)=>s+c.qty,0);const b=document.getElementById("cart-badge");b.textContent=n;b.dataset.n=n;
   const list=document.getElementById("ditems");
-  list.innerHTML=cart.length?cart.map((c,i)=>{const p=P[c.id];return `<div class="ditem"><img src="${img(p.variants[c.v][0])}" alt=""><div><div class="n">${Object.keys(p.variants).length>1?VNAME[c.v]+" ":""}${p.name}</div><div class="m">Adet: ${c.qty}</div>${c.note?`<div class="gn">Not: “${c.note.replace(/</g,"&lt;")}”</div>`:""}<button class="rm" type="button" data-rm="${i}">Kaldır</button></div><b class="price">${tl(p.price*c.qty)}</b></div>`}).join(""):`<div class="empty"><span class="script">Sepetiniz boş</span><p>Solmayan bir sürpriz seçmeye ne dersiniz?</p><button class="btn btn-ghost" type="button" data-close-cart>Alışverişe dön</button></div>`;
+  list.innerHTML=cart.length?cart.map((c,i)=>{const p=P[c.id];return `<div class="ditem"><img src="${img(p.variants[c.v][0])}" alt=""><div><div class="n">${Object.keys(p.variants).length>1?VNAME[c.v]+" ":""}${p.name}</div><div class="m">Adet: ${c.qty}</div>${c.note?`<div class="gn">Not: “${c.note.replace(/</g,"&lt;")}”</div>`:""}<button class="rm" type="button" data-rm="${i}">Kaldır</button></div><b class="price">${tl(p.price*c.qty)}</b></div>`}).join(""):`<div class="empty">${BEE}<span class="script">Sepetiniz boş</span><p>Solmayan bir sürpriz seçmeye ne dersiniz?</p><button class="btn btn-ghost" type="button" data-close-cart>Alışverişe dön</button></div>`;
   document.getElementById("dtotal").textContent=tl(cartTotal());
   updateFree();
+  updateUpsell();
+}
+// Sepette hazır ürün önerisi: kargo eşiğine kalan tutarı hazır çiçekle tamamlatır
+function updateUpsell(){
+  const u=document.getElementById("upsell");
+  const picks=Object.keys(P).filter(k=>P[k].type==="ready"&&P[k].price&&!cart.some(c=>c.id===k)).slice(0,2);
+  u.hidden=!cart.length||!picks.length;if(u.hidden)return;
+  const r=FREE-cartTotal();
+  u.innerHTML=`<b>${r>0?`Ücretsiz kargoya ${tl(r)} kaldı. Yanına bir hazır çiçek ekleyin:`:"Yanına ekleyin"}</b>`+picks.map(k=>{const v=Object.keys(P[k].variants)[0];return `<div class="u">${ph("")}<span>${P[k].name}<br><span class="price">${tl(P[k].price)}</span></span><button type="button" data-add="${k}" data-v="${v}">Ekle</button></div>`}).join("");
 }
 let tt;function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),1800)}
 const drawer=document.getElementById("drawer"),menu=document.getElementById("menu");
@@ -694,6 +783,7 @@ function closeMenu(){menu.classList.remove("open");menu.setAttribute("aria-hidde
 
 document.addEventListener("click",e=>{
   const t=e.target;
+  const setB=t.closest("[data-set]");if(setB){SETS[+setB.dataset.set].items.forEach(([id,v])=>add(id,v));openCart();return}
   const addB=t.closest("[data-add]");if(addB){e.stopPropagation();add(addB.dataset.add,addB.dataset.v);return}
   const rm=t.closest("[data-rm]");if(rm){cart.splice(+rm.dataset.rm,1);save();updateCart();return}
   if(t.closest("[data-close-cart]")){closeCart();return}
