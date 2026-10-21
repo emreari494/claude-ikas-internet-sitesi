@@ -32,6 +32,7 @@ p{margin:0}
 .old{color:var(--ink-2);text-decoration:line-through;font-weight:400;font-size:.9em}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:1px solid transparent;font-weight:600;font-size:14px;letter-spacing:.02em;text-decoration:none;transition:background .2s,transform .1s}
 .btn:active{transform:scale(.98)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
 .btn-primary{background:var(--rose);color:#fff}
 .btn-primary:hover{background:var(--rose-deep)}
 .btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
@@ -353,8 +354,18 @@ body.pg-product .wa{display:none}
 .notify{display:flex;gap:8px;flex-wrap:wrap}
 .notify input{flex:1 1 200px;min-width:0;min-height:48px;border-radius:999px;border:1px solid var(--line);background:var(--paper);padding:0 18px;font:inherit}
 
+/* Malzemeler: renk yerine yazılı seçenek (tekli / paket) */
+.sw.txt{width:auto;height:44px;padding:0 20px;border-radius:999px;background:var(--paper);font-size:13px;font-weight:600}
+.tag.sup{background:var(--ink);color:var(--paper)}
+.gallery>.ph{aspect-ratio:4/5;border-radius:0}
+.refill{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;font-size:13px}
+.refill b{font-family:var(--f-display);font-size:18px;font-weight:500}
+.refill div{display:flex;gap:8px;flex-wrap:wrap}
+.refill button{border:1px solid var(--line);background:var(--cream);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:500}
+
 /* Geniş ekran */
 @media (min-width:768px){
+  .gallery>.ph{border-radius:16px}
   .design{padding:40px;grid-template-columns:1fr auto;align-items:center}
   .design .bee{position:static;width:120px;height:90px;grid-row:span 4}
   .ghero{grid-template-columns:1fr 1fr;align-items:center;gap:48px}
@@ -428,6 +439,7 @@ body.pg-product .wa{display:none}
         <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
         <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
         <a data-go="home" data-jump="setler">Setler</a>
+        <a data-go="home" data-jump="malzemeler">Malzemeler</a>
         <a data-go="bahce" data-game-name>Bee Bahçem</a>
         <a class="nav-hot" data-go="home" data-jump="tasarla">Buketini tasarla</a>
       </nav>
@@ -444,6 +456,7 @@ body.pg-product .wa{display:none}
     <h4>Alışveriş</h4>
     <a class="hot" data-go="home" data-jump="tasarla">Kendi buketinizi tasarlayın <span class="soon">Çok yakında</span></a>
     <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
+    <a data-go="home" data-jump="malzemeler">Malzemeler</a>
     <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
     <a data-go="home" data-jump="setler">Setler</a>
     <a data-go="home" data-jump="birlikte">Birlikte Yap</a>
@@ -482,7 +495,7 @@ body.pg-product .wa{display:none}
         <p>El yapımı şönil çiçekler ve kendin yap kitleri. Her parça dükkânımızda elde hazırlanır.</p>
         <p style="margin-top:10px">WhatsApp: <span style="user-select:all;font-weight:600;color:var(--ink)">0551 096 56 14</span></p>
       </div>
-      <div><h4>Alışveriş</h4><ul><li><a href="#home">Hazır çiçekler</a></li><li><a href="#home">Kendin yap kitleri</a></li><li><a href="#home">Birlikte yap</a></li></ul></div>
+      <div><h4>Alışveriş</h4><ul><li><a href="#home">Hazır çiçekler</a></li><li><a href="#home">Kendin yap kitleri</a></li><li><a data-go="home" data-jump="malzemeler" href="#home">Malzemeler</a></li><li><a href="#home">Birlikte yap</a></li></ul></div>
       <div><h4>Yardım</h4><ul><li><a href="#home">Kargo ve teslimat</a></li><li><a href="#home">İade ve değişim</a></li><li><a href="#home">Sipariş takibi</a></li></ul></div>
       <div><h4>Kurumsal</h4><ul><li><a data-go="bahce" href="#bee-bahcem" data-game-name>Bee Bahçem</a></li><li><a href="#home">Hikâyemiz</a></li><li><a href="#home">İletişim</a></li><li><a href="#home">KVKK ve çerezler</a></li></ul></div>
     </div>
@@ -526,11 +539,18 @@ const P={
   "birlikte":{name:"Sevgilinle Yap Buket Seti",type:"diy",cat:"Birlikte Yap",price:null,lead:"İki kişilik set: mavi + pembe, toplam 130 şönil. Birlikte yapın, ikiniz de bir buketle kalın.",variants:{"mavi-pembe":["birlikte"]}},
   "lilyum-tekli":{name:"Kırmızı Lilyum Tekli Çiçek",type:"ready",cat:"Hazır Çiçekler",price:350,lead:"Şeffaf ambalaj ve kurdeleyle hazır gönderilir. Solmaz, bakım istemez.",variants:{kirmizi:["lilyum-kirmizi"]}},
   "lale":{name:"Tekli Şönil Lale",type:"ready",cat:"Hazır Çiçekler",price:350,lead:"Altın kenarlı şeffaf kılıfta tek lale. Masaüstüne ya da küçük bir teşekküre.",variants:{mor:["lale-mor"],pembe:["lale-pembe"],beyaz:["lale-sari"]}},
+  "sonil-tel":{name:"Şönil Tel",type:"supply",cat:"Malzemeler",price:null,sub:"Tekli ve paket",lead:"Şönil çiçeklerin yumuşak, tüylü teli. Tekli ya da paket halinde.",groups:[["Seçenek",["tekli","paket"]]]},
+  "cicek-teli":{name:"Çiçek Teli",type:"supply",cat:"Malzemeler",price:null,sub:"Yeşil · 20 ve 30 cm · 25–100'lü",lead:"Sapları ve yaprakları sağlamlaştırmak için yeşil çiçek teli. 20 cm ve 30 cm boylarında; 25'li, 50'li ve 100'lü paketlerde.",groups:[["Boy",["cm30","cm20"]],["Paket",["p25","p50","p100"]]]},
+  "cicek-bandi":{name:"Çiçek Bandı",type:"supply",cat:"Malzemeler",price:null,sub:"Yeşil · 35 m",lead:"Sapları sarıp birleştirmek için yeşil çiçek bandı, 35 metre. Tekli ya da paket halinde.",groups:[["Seçenek",["tekli","paket"]]]},
+  "tomurcuk":{name:"Tomurcuk",type:"supply",cat:"Malzemeler",price:null,sub:"Demet · tekli ve paket",lead:"Çiçek ortaları için demet halinde tomurcuk. Tekli demet ya da paket.",groups:[["Seçenek",["tekli","paket"]]]},
   "mini-saksi":{name:"Lilyum Mini Saksı",type:"ready",cat:"Hazır Çiçekler",price:450,lead:"Beyaz mini saksıda hazır şönil çiçek. Yaklaşık 18 cm.",variants:{sari:["saksi-sari"],lacivert:["saksi-lacivert"],beyaz:["saksi-papatya"]}}
 };
-const VNAME={pembe:"Pembe",mavi:"Mavi",lila:"Lila",sari:"Sarı",kirmizi:"Kırmızı",beyaz:"Beyaz",mor:"Mor",lacivert:"Lacivert","mavi-pembe":"Mavi + Pembe"};
+const VNAME={pembe:"Pembe",mavi:"Mavi",lila:"Lila",sari:"Sarı",kirmizi:"Kırmızı",beyaz:"Beyaz",mor:"Mor",lacivert:"Lacivert","mavi-pembe":"Mavi + Pembe",tekli:"Tekli",paket:"Paket",p25:"25'li",p50:"50'li",p100:"100'lü",cm30:"30 cm",cm20:"20 cm"};
+const SUPPLIES=["sonil-tel","cicek-teli","cicek-bandi","tomurcuk"];
+// Malzemelerde seçenek grupları (boy, paket…) birleşik varyanta dönüşür: "cm30-p25" → "30 cm · 25'li"
+SUPPLIES.forEach(id=>{const p=P[id];let keys=[""];p.groups.forEach(([,o])=>{keys=keys.flatMap(k=>o.map(x=>k?k+"-"+x:x))});p.variants={};keys.forEach(k=>{p.variants[k]=[];VNAME[k]=k.split("-").map(x=>VNAME[x]).join(" · ")})});
 // Kitten hazıra, hazırdan kite köprü: her ürünün karşı taraftaki eşi
-const CROSS={"lilyum-kit":"lilyum-tekli","papatya-kit":"mini-saksi","birlikte":"mini-saksi","lilyum-tekli":"lilyum-kit","lale":"lilyum-kit","mini-saksi":"papatya-kit"};
+const CROSS={"sonil-tel":"lilyum-kit","cicek-teli":"lilyum-kit","cicek-bandi":"lilyum-kit","tomurcuk":"lilyum-kit","lilyum-kit":"lilyum-tekli","papatya-kit":"mini-saksi","birlikte":"mini-saksi","lilyum-tekli":"lilyum-kit","lale":"lilyum-kit","mini-saksi":"papatya-kit"};
 // Örnek setler: fiyat ve içerik kullanıcıdan teyit bekliyor
 const SETS=[
   {name:"Birini yap, birini hediye et",items:[["lilyum-kit","pembe"],["mini-saksi","sari"]],desc:"Lilyum buket kiti + hazır lilyum mini saksı. Buketi siz yapın, saksıyı hemen hediye edin.",ph:"Kit kutusu ve mini saksı yan yana"},
@@ -549,13 +569,14 @@ const save=()=>{try{localStorage.setItem("bee-cart",JSON.stringify(cart))}catch(
 function card(id,v,opts={}){
   const p=P[id];v=v||Object.keys(p.variants)[0];
   const vs=Object.keys(p.variants);
-  const tag=p.type==="diy"?`<span class="tag diy">Kendin yap</span>`:(opts.tag?`<span class="tag">${opts.tag}</span>`:"");
+  const sup=p.type==="supply",im=p.variants[v][0];
+  const tag=p.type==="diy"?`<span class="tag diy">Kendin yap</span>`:sup?`<span class="tag sup">Malzeme</span>`:(opts.tag?`<span class="tag">${opts.tag}</span>`:"");
   return `<div class="card" role="link" tabindex="0" data-open="${id}" data-v="${v}">
-    <div class="img"><img loading="lazy" src="${img(p.variants[v][0])}" alt="${VNAME[v]||""} ${p.name}">${tag}
+    <div class="img">${im?`<img loading="lazy" src="${img(im)}" alt="${VNAME[v]||""} ${p.name}">`:ph(p.name)}${tag}
       ${p.price?`<button class="quick" type="button" data-add="${id}" data-v="${v}" aria-label="Sepete ekle"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>`:""}</div>
-    <h3>${opts.title||(VNAME[v]&&vs.length>1?VNAME[v]+" ":"")+p.name}</h3>
-    ${vs.length>1?`<div class="dots">${vs.map(k=>`<i style="background:${COLORS[k]||"#ddd"}" title="${VNAME[k]}"></i>`).join("")}</div>`:`<div class="sub">${p.type==="diy"?"Tüm malzemeler kutuda":"Hazır gönderilir"}</div>`}
-    <div class="row"><span class="price">${p.price?tl(p.price):"Fiyat ikas'tan"}</span>${p.old?`<span class="old">${tl(p.old)}</span>`:""}</div>
+    <h3>${opts.title||(VNAME[v]&&vs.length>1&&!sup?VNAME[v]+" ":"")+p.name}</h3>
+    ${sup?`<div class="sub">${p.sub}</div>`:vs.length>1?`<div class="dots">${vs.map(k=>`<i style="background:${COLORS[k]||"#ddd"}" title="${VNAME[k]}"></i>`).join("")}</div>`:`<div class="sub">${p.type==="diy"?"Tüm malzemeler kutuda":"Hazır gönderilir"}</div>`}
+    <div class="row"><span class="price">${p.price?tl(p.price):""}</span>${p.old?`<span class="old">${tl(p.old)}</span>`:""}</div>
   </div>`;
 }
 
@@ -649,6 +670,12 @@ function home(){
       ${SETS.map((x,i)=>{const sum=x.items.reduce((t,[id])=>t+P[id].price,0);return `<div class="set">${ph(x.ph)}<div class="eyebrow">Örnek set</div><h3>${x.name}</h3><p>${x.desc}</p><div class="row"><span>Ayrı ayrı <b class="price">${tl(sum)}</b></span><span style="color:var(--rose-deep)">Set fiyatı belirlenecek</span></div><button class="btn btn-primary" type="button" data-set="${i}">İkisini sepete ekle</button></div>`}).join("")}
     </div>
     <div class="note"><b>Yapılacak:</b> Setler örnek. Hangi ürünlerin birlikte satılacağı ve set indirimi sizden. Set, kit alan müşteriyi hazır çiçeğe taşımanın en doğal yolu. ikas'ta "paket ürün" olarak kurulur.</div>
+  </section>
+
+  <section class="blk wrap" id="malzemeler">
+    <div class="sec-head"><div><div class="eyebrow">Kendi tasarımınız için</div><h2>Şönil çiçek malzemeleri</h2><p class="sec-lead">Kitlerimizde kullandığımız malzemeler, tekli ya da paket halinde.</p></div></div>
+    <div class="grid">${SUPPLIES.map(k=>card(k)).join("")}</div>
+    <div class="note"><b>Neden böyle:</b> Malzemeler kiti bitirenlere ve kendi tasarımını yapanlara. Satış önceliği kit ve hazır çiçekte olduğu için setlerden sonra, sade duruyor. <b>Yapılacak:</b> Fiyatlar (şimdilik gösterilmiyor); bant ve tomurcuk paketinin kaçlı olduğu; şönil tel renkleri ve paket içeriği.</div>
   </section>
 
   <section class="blk wrap" id="kime">
@@ -762,29 +789,31 @@ function product(){
   const others=Object.keys(P).filter(k=>k!==state.id&&P[k].price).slice(0,4);
   const hl=p.hl||(p.type==="ready"?[["~2 saat","el emeği (örnek)"],["Solmaz","su ve bakım istemez"],["Paketli","hediyeye hazır gelir"],["Ücretsiz not","mesajınızı yazın"]]:null);
   const x=P[CROSS[state.id]];
-  const cross=x?`<div class="cross">${ph(x.type==="diy"?"Kit kutusu":"Hazır ürün")}<div><div class="eyebrow">${p.type==="diy"?"Vaktiniz yok mu?":"Bunu kendiniz yapın"}</div><b>${p.type==="diy"?"Hazırını gönderelim":"Kendin yap kiti var"}</b><span style="font-size:13px">${x.name} · <span class="price">${tl(x.price)}</span></span><br><button type="button" data-open="${CROSS[state.id]}">Ürüne bakın →</button></div></div>`:"";
+  const sup=p.type==="supply";
+  const cross=x?`<div class="cross">${ph(x.type==="diy"?"Kit kutusu":"Hazır ürün")}<div><div class="eyebrow">${p.type==="diy"?"Vaktiniz yok mu?":sup?"Yeni mi başlıyorsunuz?":"Bunu kendiniz yapın"}</div><b>${p.type==="diy"?"Hazırını gönderelim":sup?"Her şey dahil kitle başlayın":"Kendin yap kiti var"}</b><span style="font-size:13px">${x.name} · <span class="price">${tl(x.price)}</span></span><br><button type="button" data-open="${CROSS[state.id]}">Ürüne bakın →</button></div></div>`:"";
   return `
   <div class="wrap">
-    <nav class="crumb" aria-label="Konum"><a data-go="home">Ana sayfa</a><span>/</span><a data-go="home" data-jump="${p.type==="diy"?"kitler":"hazir-cicekler"}">${p.cat}</a><span>/</span><span>${p.name}</span></nav>
+    <nav class="crumb" aria-label="Konum"><a data-go="home">Ana sayfa</a><span>/</span><a data-go="home" data-jump="${p.type==="diy"?"kitler":sup?"malzemeler":"hazir-cicekler"}">${p.cat}</a><span>/</span><span>${p.name}</span></nav>
     <div class="pdp">
       <div class="gallery">
+        ${imgs.length?"":ph(p.name+" · "+VNAME[v])}
         <div class="slides" id="slides">${imgs.map((n,i)=>`<img src="${img(n)}" alt="${VNAME[v]||""} ${p.name}, görsel ${i+1}" ${i?'loading="lazy"':'fetchpriority="high"'}>`).join("")}</div>
         ${imgs.length>1?`<div class="gdots">${imgs.map((_,i)=>`<button type="button" data-slide="${i}" aria-label="Görsel ${i+1}" aria-current="${i===0}"></button>`).join("")}</div>
         <div class="thumbs">${imgs.map((n,i)=>`<button type="button" data-slide="${i}" aria-label="Görsel ${i+1}" aria-current="${i===0}"><img src="${img(n)}" alt=""></button>`).join("")}</div>`:""}
       </div>
       <div class="pinfo">
         <div>
-          <div class="eyebrow" style="margin-bottom:8px">${p.type==="diy"?"Kendin yap kiti":"Hazır çiçek"}</div>
-          <h1>${vs.length>1?VNAME[v]+" ":""}${p.name}</h1>
-          <div class="badges" style="margin-top:10px"><span>El yapımı</span><span>Solmaz</span>${p.type==="diy"?"<span>QR video anlatımlı</span>":"<span>Hediye paketli</span>"}</div>
+          <div class="eyebrow" style="margin-bottom:8px">${p.type==="diy"?"Kendin yap kiti":sup?"Malzeme":"Hazır çiçek"}</div>
+          <h1>${vs.length>1&&!sup?VNAME[v]+" ":""}${p.name}</h1>
+          <div class="badges" style="margin-top:10px">${sup?`<span>${p.sub}</span><span>Kitlerimizde kullandığımız</span>`:`<span>El yapımı</span><span>Solmaz</span>${p.type==="diy"?"<span>QR video anlatımlı</span>":"<span>Hediye paketli</span>"}`}</div>
         </div>
         <p class="lead">${p.lead}</p>
-        <div class="pprice"><span class="price">${p.price?tl(p.price):"Fiyat ikas'tan gelecek"}</span>${p.old?`<span class="old">${tl(p.old)}</span><span class="save">${tl(p.old-p.price)} indirim</span>`:""}</div>
-        ${vs.length>1?`<div><div class="opt-label">Renk: <span>${VNAME[v]}</span></div><div class="swatches">${vs.map(k=>`<button class="sw" type="button" data-v="${k}" aria-pressed="${k===v}" aria-label="${VNAME[k]}" title="${VNAME[k]}" style="background:${COLORS[k]||"#ddd"}"></button>`).join("")}</div></div>`:""}
-        <div class="gift">
+        <div class="pprice"><span class="price">${p.price?tl(p.price):""}</span>${p.old?`<span class="old">${tl(p.old)}</span><span class="save">${tl(p.old-p.price)} indirim</span>`:""}</div>
+        ${sup?p.groups.map(([label,o],gi)=>{const parts=v.split("-");return `<div><div class="opt-label">${label}: <span>${VNAME[parts[gi]]}</span></div><div class="swatches">${o.map(k=>{const nv=parts.map((x,i)=>i===gi?k:x).join("-");return `<button class="sw txt" type="button" data-v="${nv}" aria-pressed="${parts[gi]===k}">${VNAME[k]}</button>`}).join("")}</div></div>`}).join(""):vs.length>1?`<div><div class="opt-label">Renk: <span>${VNAME[v]}</span></div><div class="swatches">${vs.map(k=>`<button class="sw" type="button" data-v="${k}" aria-pressed="${k===v}" aria-label="${VNAME[k]}" title="${VNAME[k]}" style="background:${COLORS[k]||"#ddd"}"></button>`).join("")}</div></div>`:""}
+        ${sup?"":`<div class="gift">
           <label><input type="checkbox" id="gift-on"> Hediye notu ekle <span style="color:var(--ink-2);font-weight:400">(ücretsiz)</span></label>
           <div id="gift-box" hidden><textarea id="gift-text" maxlength="160" placeholder="Örn: İyi ki doğdun, solmayan bir buket senin için."></textarea><div class="cnt"><span id="gift-cnt">0</span>/160</div></div>
-        </div>
+        </div>`}
         <div class="qtyrow">
           <div class="qty"><button type="button" id="q-minus" aria-label="Azalt">−</button><output id="q-val">${state.qty}</output><button type="button" id="q-plus" aria-label="Artır">+</button></div>
           <button class="btn btn-primary" type="button" id="add-main" ${p.price?"":"disabled"}>Sepete ekle</button>
@@ -796,14 +825,16 @@ function product(){
         </div>
         <div class="note"><b>Neden böyle:</b> Fiyat, renk, hediye notu ve kargo bilgisi telefonda ilk ekranda görünüyor. Aşağı kaydırınca alttaki "Sepete ekle" çubuğu açılıyor.</div>
         ${cross}
-        <a class="game-line" data-go="bahce">${BEE}<span>Bu çiçeği bahçenize ekleyin: <b>${GAME.name}</b> oyunu yakında</span></a>
+        ${p.type==="diy"?`<div class="refill"><b>Malzemeniz mi bitti?</b><span>Kitte kullandığınız malzemeler tek tek de satılıyor.</span><div>${SUPPLIES.map(k=>`<button type="button" data-open="${k}">${P[k].name}</button>`).join("")}</div></div>
+        <div class="note"><b>Neden böyle:</b> Kitini bitiren müşteri buradan tekrar alır. Malzemeler kit sayfasında en çok işe yarar.</div>`:""}
+        ${sup?"":`<a class="game-line" data-go="bahce">${BEE}<span>Bu çiçeği bahçenize ekleyin: <b>${GAME.name}</b> oyunu yakında</span></a>`}
         <div class="note"><b>Neden böyle:</b> Kit ve hazır çiçek birbirine köprü kuruyor. Kite bakana "hazırını gönderelim", hazıra bakana "kendiniz yapın" deniyor. Görsel yeri boş; fotoğraflar hazırlanınca dolacak.</div>
         ${hl?`<div class="highlights">${hl.map(([a,b])=>`<div class="hl"><b>${a}</b>${b}</div>`).join("")}</div>`:""}
         ${p.box?`<div class="box"><h3>Kutunun içinde</h3><ul>${p.box.map(([a,b])=>`<li><span>${a}</span><span>${b}</span></li>`).join("")}</ul></div>`:""}
         <div class="faq">
-          <details open><summary>Ürün hakkında</summary><p>${p.type==="diy"?"Kendi ellerinizle sevdiklerinize solmayacak bir buket yapın. Kutudaki QR koddan açılan video anlatımla adım adım ilerlersiniz. Hem bir hobi aktivitesi hem de el emeği bir hediye.":"Dükkânımızda elde hazırlanır, korumalı paketle gönderilir. Solmaz, su ve bakım istemez."}</p></details>
+          <details open><summary>Ürün hakkında</summary><p>${sup?"Kitlerimizde kullandığımız malzemenin aynısı. Kendi tasarımlarınız için ya da kitinizi tamamlamak için tekli veya paket halinde alabilirsiniz.":p.type==="diy"?"Kendi ellerinizle sevdiklerinize solmayacak bir buket yapın. Kutudaki QR koddan açılan video anlatımla adım adım ilerlersiniz. Hem bir hobi aktivitesi hem de el emeği bir hediye.":"Dükkânımızda elde hazırlanır, korumalı paketle gönderilir. Solmaz, su ve bakım istemez."}</p></details>
           <details><summary>Ölçüler</summary><p>${p.type==="diy"?"Kutudaki ana malzemeler 30 cm uzunluğundadır. Bitmiş buket ortalama 45 cm boy ve 20 cm en olur.":"Ölçü bilgisi ürün kartından gelir."}</p></details>
-          <details><summary>El yapımı hakkında</summary><p>El yapımı üretim nedeniyle çiçek formu, sarım ve bağlama detaylarında küçük farklılıklar olabilir. Renkler ekran ayarlarına göre hafif ton farkı gösterebilir.</p></details>
+          ${sup?"":`<details><summary>El yapımı hakkında</summary><p>El yapımı üretim nedeniyle çiçek formu, sarım ve bağlama detaylarında küçük farklılıklar olabilir. Renkler ekran ayarlarına göre hafif ton farkı gösterebilir.</p></details>`}
           <details><summary>Kargo ve iade</summary><p>Siparişiniz ertesi iş günü kargoya verilir. 1.500 TL üzeri siparişlerde kargo ücretsizdir. 14 gün içinde iade ya da değişim yapabilirsiniz.</p></details>
         </div>
       </div>
@@ -843,11 +874,12 @@ function bindProduct(){
   const mark=i=>document.querySelectorAll("[data-slide]").forEach(b=>b.setAttribute("aria-current",String(+b.dataset.slide===i)));
   slides.addEventListener("scroll",()=>{mark(Math.round(slides.scrollLeft/slides.clientWidth))},{passive:true});
   const on=document.getElementById("gift-on"),box=document.getElementById("gift-box"),t=document.getElementById("gift-text");
-  on.addEventListener("change",()=>{box.hidden=!on.checked;if(on.checked)t.focus()});
-  t.addEventListener("input",()=>{document.getElementById("gift-cnt").textContent=t.value.length});
+  if(on){on.addEventListener("change",()=>{box.hidden=!on.checked;if(on.checked)t.focus()});
+  t.addEventListener("input",()=>{document.getElementById("gift-cnt").textContent=t.value.length})}
   const p=P[state.id];
   document.getElementById("sb-name").textContent=(Object.keys(p.variants).length>1?VNAME[state.v]+" ":"")+p.name;
-  document.getElementById("sb-price").textContent=p.price?tl(p.price):"—";
+  document.getElementById("sb-price").textContent=p.price?tl(p.price):"";
+  document.getElementById("sb-add").disabled=!p.price;
 }
 function openProduct(id,v){state={id,v:v||Object.keys(P[id].variants)[0],qty:1};try{history.replaceState(null,"","#p-"+id)}catch(e){}render("product")}
 
