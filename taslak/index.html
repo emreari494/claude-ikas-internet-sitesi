@@ -321,8 +321,43 @@ body.pg-product .wa{display:none}
 .empty .bee{width:48px;height:36px}
 .upsell .u button{border:1px solid var(--rose);background:var(--paper);color:var(--rose);border-radius:999px;font-size:12px;font-weight:600;padding:6px 12px}
 
+/* Kendi buketini tasarla (çok yakında): sitede tek bal sarısı alan, bilerek dikkat çeker */
+.soon{display:inline-block;justify-self:start;background:var(--ink);color:var(--honey);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.design{position:relative;overflow:hidden;background:var(--honey);border-radius:var(--r);padding:26px 20px 24px;display:grid;gap:12px;color:var(--ink)}
+.design h2{font-size:clamp(28px,7.5vw,42px);max-width:12ch}
+.design p{color:#3d3420;max-width:44ch;font-size:14px}
+.design .bee{position:absolute;right:10px;top:12px;width:84px;height:63px;transform:rotate(12deg)}
+.design .bee ellipse:last-of-type{stroke:var(--ink);stroke-width:1.2}
+.soon{white-space:nowrap}
+.hero-soon{justify-self:start;display:inline-flex;gap:8px;align-items:center;background:var(--honey);color:var(--ink);border-radius:999px;padding:6px 14px 6px 6px;font-size:12.5px;font-weight:600;text-decoration:none;cursor:pointer}
+.hero-soon .soon{font-size:9px;padding:3px 8px}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:#2a2522}
+.desk-nav a.nav-hot{background:var(--honey);border-radius:999px;padding:6px 14px;border:0}
+.menu a.hot{background:var(--honey);border:0;border-radius:12px;padding:12px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.menu a.hot .soon,.desk-nav .soon{font-size:9px;padding:3px 8px}
+
+/* Bee Bahçem: oyun bandı ve sayfası */
+.game{display:grid;gap:12px;background:var(--sage-soft);border:1px solid var(--sage);border-radius:var(--r);padding:22px 20px}
+.game h2{font-size:clamp(26px,6.5vw,36px)}
+.game p{color:var(--ink-2);font-size:14px;max-width:48ch}
+.game-line{display:flex;gap:10px;align-items:center;background:var(--sage-soft);border-radius:12px;padding:10px 12px;font-size:13px;text-decoration:none;cursor:pointer}
+.game-line .bee{width:28px;height:21px}
+.step .ph{width:96px;height:96px;border-radius:50%;padding:6px}
+.step .ph span{font-size:8.5px}
+.ghero{display:grid;gap:20px;padding-top:12px}
+.ghero .ph{aspect-ratio:4/5}
+.ghero h1{font-size:clamp(36px,10vw,58px)}
+.ghero .script{font-size:34px}
+.ghero p{color:var(--ink-2);max-width:48ch}
+.notify{display:flex;gap:8px;flex-wrap:wrap}
+.notify input{flex:1 1 200px;min-width:0;min-height:48px;border-radius:999px;border:1px solid var(--line);background:var(--paper);padding:0 18px;font:inherit}
+
 /* Geniş ekran */
 @media (min-width:768px){
+  .design{padding:40px;grid-template-columns:1fr auto;align-items:center}
+  .design .bee{position:static;width:120px;height:90px;grid-row:span 4}
+  .ghero{grid-template-columns:1fr 1fr;align-items:center;gap:48px}
   .sets{grid-template-columns:1fr 1fr}
   .occ{grid-template-columns:repeat(3,1fr)}
   :root{--gut:28px}
@@ -336,9 +371,10 @@ body.pg-product .wa{display:none}
   .paths{grid-template-columns:1fr 1fr}
   .grid{grid-template-columns:repeat(4,1fr);gap:28px 18px}
   .rail{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:0;gap:18px}
-  .steps{grid-template-columns:repeat(3,1fr);gap:28px}
+  .steps{grid-template-columns:repeat(4,1fr);gap:28px}
   .step{grid-template-columns:1fr;text-align:center;justify-items:center}
-  .step img{width:180px;height:180px}
+  .step img,.step .ph{width:180px;height:180px}
+  .step .ph span{font-size:10px}
   .together{grid-template-columns:1.1fr 1fr;align-items:center}
   .together img{height:100%;aspect-ratio:auto}
   .together .t{padding:40px}
@@ -374,6 +410,7 @@ body.pg-product .wa{display:none}
     <nav aria-label="Taslak sayfaları">
       <button type="button" data-go="home" aria-pressed="true">Ana sayfa</button>
       <button type="button" data-go="p-lilyum-kit" aria-pressed="false">Ürün sayfası</button>
+      <button type="button" data-go="bahce" aria-pressed="false" data-game-name>Bee Bahçem</button>
     </nav>
     <label><input type="checkbox" id="notes-toggle"> Tasarım notları</label>
   </div>
@@ -391,7 +428,8 @@ body.pg-product .wa{display:none}
         <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
         <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
         <a data-go="home" data-jump="setler">Setler</a>
-        <a data-go="home" data-jump="kime">Kime Hediye?</a>
+        <a data-go="bahce" data-game-name>Bee Bahçem</a>
+        <a class="nav-hot" data-go="home" data-jump="tasarla">Buketini tasarla</a>
       </nav>
       <button class="icon-btn" type="button" aria-label="Ara"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
       <button class="icon-btn" type="button" id="cart-open" aria-label="Sepeti aç"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="badge" id="cart-badge" data-n="0">0</span></button>
@@ -404,10 +442,13 @@ body.pg-product .wa{display:none}
   <div class="panel" role="dialog" aria-label="Menü">
     <button class="icon-btn" type="button" data-close-menu aria-label="Menüyü kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <h4>Alışveriş</h4>
+    <a class="hot" data-go="home" data-jump="tasarla">Kendi buketinizi tasarlayın <span class="soon">Çok yakında</span></a>
     <a data-go="home" data-jump="kitler">Kendin Yap Kitleri</a>
     <a data-go="home" data-jump="hazir-cicekler">Hazır Çiçekler</a>
     <a data-go="home" data-jump="setler">Setler</a>
     <a data-go="home" data-jump="birlikte">Birlikte Yap</a>
+    <h4>Oyun</h4>
+    <a data-go="bahce"><span data-game-name>Bee Bahçem</span> <small style="font-family:var(--f-body);font-size:11px;color:var(--olive)">· Yakında</small></a>
     <h4>Kime hediye?</h4>
     <a data-go="home" data-jump="kime">Sevgiliye</a>
     <a data-go="home" data-jump="kime">Anneye</a>
@@ -421,7 +462,7 @@ body.pg-product .wa{display:none}
 
 <main id="app"></main>
 
-<section class="news">
+<section class="news" id="haber">
   <div class="wrap">
     <h2>Yeni renkler önce size gelsin</h2>
     <p>Yeni kitleri ve özel gün koleksiyonlarını ayda en fazla iki e-postayla duyuruyoruz.</p>
@@ -443,7 +484,7 @@ body.pg-product .wa{display:none}
       </div>
       <div><h4>Alışveriş</h4><ul><li><a href="#home">Hazır çiçekler</a></li><li><a href="#home">Kendin yap kitleri</a></li><li><a href="#home">Birlikte yap</a></li></ul></div>
       <div><h4>Yardım</h4><ul><li><a href="#home">Kargo ve teslimat</a></li><li><a href="#home">İade ve değişim</a></li><li><a href="#home">Sipariş takibi</a></li></ul></div>
-      <div><h4>Kurumsal</h4><ul><li><a href="#home">Hikâyemiz</a></li><li><a href="#home">İletişim</a></li><li><a href="#home">KVKK ve çerezler</a></li></ul></div>
+      <div><h4>Kurumsal</h4><ul><li><a data-go="bahce" href="#bee-bahcem" data-game-name>Bee Bahçem</a></li><li><a href="#home">Hikâyemiz</a></li><li><a href="#home">İletişim</a></li><li><a href="#home">KVKK ve çerezler</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 Bee Flower Shop</span><span>Güvenli ödeme · ikas altyapısı</span></div>
   </div>
@@ -496,6 +537,8 @@ const SETS=[
   {name:"Tek çiçekle başla",items:[["lale","pembe"],["papatya-kit","pembe"]],desc:"Hazır tekli lale + papatya yapım kiti. Küçük bir teşekkür ve bir akşam aktivitesi.",ph:"Tekli lale ve papatya kiti, masada"}
 ];
 const BEE=`<svg class="bee" viewBox="0 0 32 24" aria-hidden="true"><ellipse cx="13" cy="7" rx="5" ry="4" transform="rotate(-20 13 7)" fill="#FFFDF9" stroke="#8C846A" stroke-width="1.2"/><ellipse cx="19" cy="7" rx="5" ry="4" transform="rotate(20 19 7)" fill="#FFFDF9" stroke="#8C846A" stroke-width="1.2"/><ellipse cx="16" cy="15" rx="9" ry="6.5" fill="#EAC26C"/><path d="M13 10v10M18 9.5v11" stroke="#0E0C0B" stroke-width="2"/><circle cx="23" cy="13.5" r="1" fill="#0E0C0B"/></svg>`;
+// Oyunun adı değişebilir: sitede her yer bu tek satırdan okur. Yayına girince status "live" ve url dolacak.
+const GAME={name:"Bee Bahçem",status:"soon",url:""};
 const DIVIDER=`<div class="divider" aria-hidden="true"><i></i>${BEE}<i></i></div>`;
 const ph=label=>`<div class="ph"><span>Görsel gelecek</span>${label?`<small>${label}</small>`:""}</div>`;
 const img=n=>`img/${n}.jpg`;
@@ -521,6 +564,7 @@ function home(){
   <section class="hero">
     <div class="hero-media"><img src="img/hero.jpg" alt="Hasır sepette el yapımı şönil bahar çiçekleri, oturma odası sehpasında" fetchpriority="high"></div>
     <div class="hero-copy">
+      <a class="hero-soon" data-go="home" data-jump="tasarla"><span class="soon">Çok yakında</span>Kendi buketinizi tasarlayın →</a>
       <span class="script">Bugün sürpriz, hep hatıra</span>
       <h1>Solmayan çiçekler, <em>elle</em> yapılmış hediyeler.</h1>
       <p>Kitle kendi buketinizi yapın ya da biz sizin için yapıp gönderelim. Her parça dükkânımızda elde hazırlanır.</p>
@@ -538,6 +582,17 @@ function home(){
     <div><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2"/></svg><span><b>QR ile video</b>Adım adım anlatım</span></div>
     <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span><b>Türkiye geneli</b>Ertesi iş günü kargoda</span></div>
   </div>
+
+  <section class="blk wrap" id="tasarla" style="padding-top:28px">
+    <div class="design">
+      ${BEE}
+      <span class="soon">Çok yakında</span>
+      <h2>Kendi buketinizi tasarlayın</h2>
+      <p>Çiçeklerinizi, renklerinizi seçip buketinizi ekranda oluşturacağınız araçlar hazırlanıyor. Açıldığında ilk siz haberdar olun.</p>
+      <a class="btn btn-dark" style="justify-self:start" data-go="home" data-jump="haber">Açılınca haber ver</a>
+    </div>
+    <div class="note"><b>Neden böyle:</b> Sitede bal sarısı tek bu alanda kullanılıyor; bu yüzden ilk bakışta göze çarpıyor. İçerik henüz kurgulanmadı; şimdilik "çok yakında" ve haber listesi. Menüde de aynı renkte duruyor.</div>
+  </section>
 
   <section class="blk wrap">
     <div class="sec-head"><div><div class="eyebrow">İki yol, iki hediye</div><h2>Nasıl hediye etmek istersiniz?</h2></div></div>
@@ -564,7 +619,16 @@ function home(){
         <div class="step"><img loading="lazy" src="img/kit-pembe-2.jpg" alt="Kit içeriği: şönil teller, bant, tomurcuk, ambalaj ve not kartları"><div><h3>Kutuyu açın</h3><p>Renkleri seçilmiş şönil, tel, bant, tomurcuk, ambalaj ve not kartı içindedir. Ek malzeme gerekmez.</p></div></div>
         <div class="step"><img loading="lazy" src="img/kit-lila.jpg" alt="Lila şönil çiçeği adım adım şekillendiren eller"><div><h3>QR'ı okutun</h3><p>Video anlatımı telefonunuzda açın. Her çiçeği adım adım şekillendirin.</p></div></div>
         <div class="step"><img loading="lazy" src="img/kit-pembe-1.jpg" alt="Bitmiş pembe lilyum buketi elde tutuluyor"><div><h3>Buketi sarın</h3><p>Kalpli ambalaja sarın, notunuzu yazın. Solmayan bir hediye hazır.</p></div></div>
+        <div class="step">${ph("Oyunda bahçe")}<div><h3>Bahçenizi tasarlayın</h3><p>Yaptığınız çiçeği ${GAME.name} oyununda dijital bahçenize ekleyin. <b>Yakında.</b></p></div></div>
       </div>
+      <div class="game" style="margin-top:32px">
+        ${BEE}
+        <div class="eyebrow">Yakında · Oyun</div>
+        <h2>${GAME.name}</h2>
+        <p>Satın aldığınız çiçeklerle kendi bahçenizi tasarlayın. Kutudaki QR kod sizi oyuna götürecek.</p>
+        <a class="btn btn-ghost" style="justify-self:start" data-go="bahce">Oyunu keşfedin</a>
+      </div>
+      <div class="note"><b>Neden böyle:</b> Oyun, kitin dördüncü adımı olarak anlatılıyor; satıştan kopuk bir ek değil, ürünün devamı. Ürünlerin önüne geçmiyor, kit anlatımından sonra geliyor.</div>
     </div>
   </section>
 
@@ -652,6 +716,45 @@ function home(){
   </section>`;
 }
 
+function bahce(){
+  return `
+  <div class="wrap">
+    <nav class="crumb" aria-label="Konum"><a data-go="home">Ana sayfa</a><span>/</span><span>${GAME.name}</span></nav>
+    <section class="ghero">
+      <div>
+        <span class="soon">Yakında</span>
+        <h1 style="margin-top:14px">${GAME.name}</h1>
+        <span class="script">Çiçeklerinizle bahçenizi kurun</span>
+        <p style="margin-top:14px">Satın aldığınız şönil çiçekleri dijital bahçenize ekleyin, bahçenizi istediğiniz gibi tasarlayın. Telefonunuzdan oynanır.</p>
+        <p style="margin-top:18px;font-weight:600;color:var(--ink)">Oyun çıktığında haber verelim:</p>
+        <form class="notify" id="game-form" style="margin-top:10px">
+          <input type="email" placeholder="E-posta adresiniz" aria-label="E-posta adresiniz" required>
+          <button class="btn btn-primary" type="submit">Haber ver</button>
+        </form>
+        <p id="game-ok" hidden style="margin-top:10px">Teşekkürler, oyun çıkınca size yazacağız. (Taslakta e-posta gönderilmez.)</p>
+      </div>
+      ${ph("Oyun ekran görüntüsü: telefonda bahçe")}
+    </section>
+    <div class="note"><b>Neden böyle:</b> Kit kutusundaki QR kod doğrudan oyuna değil bu sayfaya gelir. Oyunun adresi değişse de basılı kutular geçerli kalır, kaç kişinin okuttuğu ölçülür ve gelen kişi ürünleri de görür. Oyun yayına girince "Haber ver" yerine "Hemen oyna" butonu gelir.</div>
+
+    <section class="how" style="margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut)">
+      <div class="sec-head"><div><div class="eyebrow">Nasıl oynanır?</div><h2>Gerçek çiçek, dijital bahçe</h2></div></div>
+      <div class="steps">
+        <div class="step">${ph("Kit kutusu")}<div><h3>Çiçeğinizi alın</h3><p>Kit ya da hazır çiçek; hepsi oyunda da var.</p></div></div>
+        <div class="step">${ph("QR okutma")}<div><h3>QR'ı okutun</h3><p>Kutudaki kod sizi bu sayfaya getirir.</p></div></div>
+        <div class="step">${ph("Bahçe ekranı")}<div><h3>Bahçenize ekleyin</h3><p>Çiçeği bahçenize yerleştirin, düzeni size kalsın.</p></div></div>
+        <div class="step">${ph("Dolu bahçe")}<div><h3>Bahçeniz büyüsün</h3><p>Her yeni çiçekle bahçeniz zenginleşir.</p></div></div>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="sec-head"><div><div class="eyebrow">Gerçeği de var</div><h2>Bahçenize ekleyebileceğiniz çiçekler</h2></div></div>
+      <div class="grid">${card("lilyum-kit","pembe")}${card("papatya-kit")}${card("lale","pembe")}${card("mini-saksi","sari")}</div>
+      <div class="note"><b>Neden böyle:</b> Oyundaki çiçekler ürünlerle aynı. Oyun sayfası da satışa yönlendiriyor: oyuna gelen kişi bahçesine ekleyeceği çiçeğin gerçeğini buradan alabilir.</div>
+    </section>
+  </div>`;
+}
+
 let state={id:"lilyum-kit",v:"pembe",qty:1,slide:0};
 function product(){
   const p=P[state.id];const v=state.v;const imgs=p.variants[v];
@@ -693,6 +796,7 @@ function product(){
         </div>
         <div class="note"><b>Neden böyle:</b> Fiyat, renk, hediye notu ve kargo bilgisi telefonda ilk ekranda görünüyor. Aşağı kaydırınca alttaki "Sepete ekle" çubuğu açılıyor.</div>
         ${cross}
+        <a class="game-line" data-go="bahce">${BEE}<span>Bu çiçeği bahçenize ekleyin: <b>${GAME.name}</b> oyunu yakında</span></a>
         <div class="note"><b>Neden böyle:</b> Kit ve hazır çiçek birbirine köprü kuruyor. Kite bakana "hazırını gönderelim", hazıra bakana "kendiniz yapın" deniyor. Görsel yeri boş; fotoğraflar hazırlanınca dolacak.</div>
         ${hl?`<div class="highlights">${hl.map(([a,b])=>`<div class="hl"><b>${a}</b>${b}</div>`).join("")}</div>`:""}
         ${p.box?`<div class="box"><h3>Kutunun içinde</h3><ul>${p.box.map(([a,b])=>`<li><span>${a}</span><span>${b}</span></li>`).join("")}</ul></div>`:""}
@@ -724,10 +828,11 @@ function product(){
 const app=document.getElementById("app");
 let page="home";
 function render(to,jump){
-  page=to==="home"?"home":"product";
+  page=to==="home"||to==="bahce"?to:"product";
   document.body.classList.toggle("pg-product",page==="product");
-  document.querySelectorAll(".proto [data-go]").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.go==="home")===(page==="home"))));
-  app.innerHTML=page==="home"?home():product();
+  document.querySelectorAll(".proto [data-go]").forEach(b=>b.setAttribute("aria-pressed",String(page==="product"?b.dataset.go.startsWith("p-"):b.dataset.go===page)));
+  app.innerHTML=page==="home"?home():page==="bahce"?bahce():product();
+  setGameName();
   closeMenu();
   if(jump){const el=document.getElementById(jump);if(el){const y=el.getBoundingClientRect().top+scrollY-80;scrollTo({top:y,behavior:"smooth"});return}}
   scrollTo({top:0});
@@ -791,7 +896,7 @@ document.addEventListener("click",e=>{
   const sw=t.closest(".sw");if(sw){state.v=sw.dataset.v;state.qty=1;const y=scrollY;app.innerHTML=product();bindProduct();updateFree();scrollTo({top:y});return}
   const sl=t.closest("[data-slide]");if(sl){const s=document.getElementById("slides");s.scrollTo({left:s.clientWidth*+sl.dataset.slide,behavior:"smooth"});document.querySelectorAll("[data-slide]").forEach(b=>b.setAttribute("aria-current",String(b.dataset.slide===sl.dataset.slide)));return}
   const op=t.closest("[data-open]");if(op){openProduct(op.dataset.open,op.dataset.v);return}
-  const go=t.closest("[data-go]");if(go){e.preventDefault();const g=go.dataset.go;if(g==="home")render("home",go.dataset.jump);else openProduct(g.replace(/^p-/,""));return}
+  const go=t.closest("[data-go]");if(go){e.preventDefault();const g=go.dataset.go;if(g==="home")render("home",go.dataset.jump);else if(g==="bahce"){try{history.replaceState(null,"","#bee-bahcem")}catch(_){}render("bahce")}else openProduct(g.replace(/^p-/,""));return}
   const chip=t.closest(".chip");if(chip){chip.parentElement.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c===chip)));return}
   if(t.closest("#q-minus")){state.qty=Math.max(1,state.qty-1);document.getElementById("q-val").textContent=state.qty;return}
   if(t.closest("#q-plus")){state.qty=Math.min(20,state.qty+1);document.getElementById("q-val").textContent=state.qty;return}
@@ -811,6 +916,8 @@ const sb=document.getElementById("sticky-buy");
 addEventListener("scroll",()=>{if(page!=="product")return;const a=document.getElementById("add-main");if(!a)return;sb.classList.toggle("on",a.getBoundingClientRect().bottom<0)},{passive:true});
 
 const h=location.hash.replace("#","");
-if(h.startsWith("p-")&&P[h.slice(2)])openProduct(h.slice(2));else render("home");
+document.addEventListener("submit",e=>{if(e.target.id==="game-form"){e.preventDefault();document.getElementById("game-ok").hidden=false}});
+function setGameName(){document.querySelectorAll("[data-game-name]").forEach(el=>el.textContent=GAME.name)}
+if(h.startsWith("p-")&&P[h.slice(2)])openProduct(h.slice(2));else if(h==="bee-bahcem")render("bahce");else render("home");
 updateCart();
 </script>

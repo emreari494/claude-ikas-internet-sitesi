@@ -65,6 +65,8 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
 - **Tema yönü: "Atölye".** Sıcak el işi atölyesi hissi; kit sitelerinin samimiyeti tüm siteye. Arı motifi, şönil tel gibi kıvrımlı ayraç, "El yapımı / Solmaz / QR video" rozetleri, Allura sadece 1–2 yerde. Fotoğraf dili: hazır ürün ev ortamında, kit kutu içeriği ve eller.
 - **Site yapısı:** Ana sayfa uzun ve bölümlü (menü bölümlere kaydırır); ürün, kategori, sepet ayrı adreslerde (Google, paylaşım, reklam için).
 - **Görseller:** Kullanıcı ürün fotoğraflarını elden geçirip kendisi yükleyecek. Yeni bölümlerde ürün fotoğrafı eklenmez; "Görsel gelecek" kutusu ve ne çekileceği notu konur.
+- **Bee Bahçem oyunu** (21 Ekim 2026): Ayrı bir Claude Code penceresinde geliştiriliyor. Ad değişebilir (taslakta tek yerde: `GAME` sabiti). Büyük ihtimalle tarayıcıda oynanır (kesin değil). Henüz yayında değil, tarih belli değil. Oyundaki çiçekler ürünlerle aynı. Sitede: menü, footer, kit adımlarının 4. adımı + oyun bandı, ürün sayfasında tek satır, "Bee Bahçem" sayfası ("Yakında" + e-posta ile haber + ürün önerileri). Kit kutusundaki QR doğrudan oyuna değil, sitedeki oyun sayfasına gider. İleride: üyelikle giriş, kutudaki kodla çiçeği oyuna ekleme, oyundan ürüne link.
+- **"Kendi buketinizi tasarlayın"** (21 Ekim 2026): İçeriği henüz kurgulanmadı (içinde araçlar olacak). Şimdilik "Çok yakında". Bilerek belirgin: sitede bal sarısı yalnız bu alanda; hero'da bağlantı, güven şeridinin altında bant, menüde sarı satır.
 - Örnek ilham siteleri: The Woobles, LEGO Botanicals, Hawthorn Handmade, Bloom & Wild, Afloral. Kullanıcı en çok kit sitelerini sevdi.
 
 ## Sıradaki adımlar
