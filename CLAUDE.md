@@ -73,12 +73,17 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
 ## Sıradaki adımlar
 
 1. Kullanıcı taslağı inceleyip revizyon söyleyecek (eşiyle de paylaşacak).
-2. ikas partner panelinde **geliştirme (test) mağazası** ve **tema** oluşturulacak; Theme Config alınacak (depoya girmez).
-3. Kurulum kararları (her biri onayla):
-   - Yarn kurulu değil (`npm install -g yarn`).
-   - Tema iskeleti: `npx create-ikas-theme@latest` en son Nisan 2023'te güncellenmiş ve `@ikas/storefront ^4` istiyor; npm'de güncel sürüm 5.x. Kurmadan önce hangi sürümün doğru olduğu ikas.dev'den teyit edilmeli. ikas "ikas Studio" adlı yeni bir tema ortamı duyuracağını yazıyor.
-   - ikas tema geliştirme **beta**; canlıya geçmeden her şey test mağazasında denenir, eski tema yedek kalır.
-4. Taslaktaki bölümler ikas bileşenlerine (Next.js + TypeScript + MobX) dönüştürülecek: önce ana sayfa, sonra ürün, kategori, sepet.
+2. ~~Test mağazası~~ hazır: **dev-emreari.myikas.com** (ikas Builder açık). Canlı mağazaya dokunulmaz.
+3. **Yöntem kararı (22 Ekim 2026): kodlu tema, ikas Builder "Kod Bileşenler" ile.** Eski `create-ikas-theme` (2023) KULLANILMAZ. Yeni resmi araç `ikas` CLI (npm, Ekim 2026, Node ≥ 20; rehber: https://builders.ikas.com). Builder → sol menü `</>` "Kod Bileşenler" panelindeki adımlar:
+   1. `npm install ikas -g`
+   2. Proje klasöründe `ikas theme init -e <editör adresi>` (tam adres paneldeki kutuda; editör adresi `…/admin/storefront/<id>/editor/<id>` biçiminde)
+   3. `ikas theme dev` (açık kalmalı)
+   4. Editörde "Bağlan" butonu
+   - Bölümler kodla yazılır, sayfaya yerleştirme ve yazı/görsel düzenleme Builder'da yapılır.
+   - **Bilgisayarda (Claude Code masaüstü) yapılır**, bulut penceresinde değil: `ikas auth login` giriş anahtarı `~/.ikas/` altında saklanır, depoya girmez; `theme dev` sürekli açık kalmalı.
+   - Her kurulum adımı onayla. "Yayınla" butonuna onaysız basılmaz. Tema projesi depoda `bee-flower-shop/` klasöründe (22 Ekim 2026'da kullanıcının bilgisayarında `ikas theme init`, Standart şablon ile kuruldu; boş kalan `tema/` silinecek). `node_modules` ve gizli dosyalar depoya girmez. Yerel klasör OneDrive Masaüstü altında (`…\Desktop\Claude\ikas internet sitesi`); OneDrive senkronu yavaşlık/kilit sorunu çıkarabilir.
+   - Chrome'daki Claude ile Builder'da tıklayarak kurma fikri bırakıldı.
+4. Taslaktaki bölümler kod bileşenlerine dönüştürülecek: önce renk/font/menü/footer, sonra ana sayfa, ürün, kategori, sepet, Bee Bahçem sayfası.
 5. Açık işler: yazısız "bitmiş buket" fotoğrafları, gerçek yorumlar, kargo süresi teyidi, renkleri varyanta toplama (ikas Admin API ile mümkün).
 6. Taslaktaki örnekler teyit bekliyor: set içerikleri ve set fiyatı, hazır ürünlerde "~2 saat el emeği" süresi, öne çıkacak özel günler.
 
