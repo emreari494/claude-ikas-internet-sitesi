@@ -1,0 +1,23 @@
+{
+  "name": "bee-flower-shop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ikas-component dev",
+    "build": "ikas-component build",
+    "publish": "ikas-component publish",
+    "check": "ikas-component check"
+  },
+  "dependencies": {
+    "preact": "^10.19.3"
+  },
+  "devDependencies": {
+    "@ikas/component-cli": "^2.13.0",
+    "@ikas/bp-storefront": "^2.13.0",
+    "@ikas/code-components-mcp": "^2.13.0",
+    "@preact/preset-vite": "^2.10.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0"
+  }
+}
