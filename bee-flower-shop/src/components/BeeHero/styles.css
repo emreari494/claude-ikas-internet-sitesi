@@ -1,0 +1,178 @@
+/* Bee Hero — taslak/index.html ana sayfa hero'sundan. Mobilde görsel üstte, masaüstünde yazı solda görsel sağda. */
+
+.bee-hero {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+.bee-hero__inner {
+  max-width: 73.75rem;
+  margin-inline: auto;
+}
+
+.bee-hero__media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 40rem;
+  overflow: hidden;
+  background: #EEEFDF;
+}
+
+.bee-hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+.bee-hero__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #EEEFDF, var(--color-accent-light));
+}
+
+.bee-hero__copy {
+  display: grid;
+  gap: 0.875rem;
+  padding: 1.75rem 1rem 0.5rem;
+}
+
+.bee-hero__soon {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem 0.375rem 0.375rem;
+  border-radius: 999px;
+  background: var(--brand-honey);
+  color: var(--color-text-primary);
+  font-size: 0.78125rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bee-hero__soon-badge {
+  padding: 0.1875rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-text-primary);
+  color: var(--brand-honey);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bee-hero__script {
+  font-family: var(--font-script);
+  font-size: 2.125rem;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.bee-hero__heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.125rem, 9vw, 3.625rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.bee-hero__em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.bee-hero__subtext {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.bee-hero__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+  margin-top: 0.375rem;
+}
+
+.bee-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.375rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.bee-hero__btn:active {
+  transform: scale(0.98);
+}
+
+.bee-hero__btn:focus-visible,
+.bee-hero__soon:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.bee-hero__btn--primary {
+  background: var(--color-accent);
+  color: #FFFFFF;
+}
+
+.bee-hero__btn--primary:hover {
+  background: var(--color-accent-dark);
+}
+
+.bee-hero__btn--secondary {
+  border-color: var(--color-text-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.bee-hero__btn--secondary:hover {
+  background: var(--color-text-primary);
+  color: var(--color-surface);
+}
+
+@media (min-width: 768px) {
+  .bee-hero__inner {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 1rem 0;
+  }
+
+  .bee-hero__media {
+    order: 2;
+    border-radius: 20px;
+  }
+
+  .bee-hero__copy {
+    padding: 0;
+  }
+
+  .bee-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bee-hero__btn {
+    transition: none;
+  }
+}

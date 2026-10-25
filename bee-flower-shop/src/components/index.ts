@@ -30,3 +30,4 @@ export { ImageSlide } from "./ImageSlide/index";
 export { RecoverPassword } from "./RecoverPassword/index";
 export { Contact } from "./Contact/index";
 export { GuestOrderTracking } from "./GuestOrderTracking/index";
+export { BeeHero } from "./BeeHero/index";

@@ -6860,6 +6860,144 @@
           "description": "Hata durumlarında gösterilecek mesajlar"
         }
       ]
+    },
+    {
+      "id": "4beakgdp-bM3eL6Ks1R",
+      "name": "BeeHero",
+      "entry": "./src/components/BeeHero/index.tsx",
+      "styles": "./src/components/BeeHero/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "description": "Hero fotoğrafı (dikey, 4:5 oranı ideal)",
+          "groupId": "media"
+        },
+        {
+          "name": "imageAlt",
+          "displayName": "Görsel Açıklaması",
+          "type": "TEXT",
+          "required": false,
+          "description": "Görme engelliler ve Google için fotoğrafın kısa tarifi",
+          "defaultValue": "Hasır sepette el yapımı şönil bahar çiçekleri, oturma odası sehpasında",
+          "groupId": "media"
+        },
+        {
+          "name": "showSoon",
+          "displayName": "\"Çok yakında\" Bağlantısını Göster",
+          "type": "BOOLEAN",
+          "required": false,
+          "defaultValue": true,
+          "groupId": "soon"
+        },
+        {
+          "name": "soonBadge",
+          "displayName": "Rozet Yazısı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Çok yakında",
+          "groupId": "soon"
+        },
+        {
+          "name": "soonText",
+          "displayName": "Bağlantı Yazısı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Kendi buketinizi tasarlayın →",
+          "groupId": "soon"
+        },
+        {
+          "name": "soonLink",
+          "displayName": "Bağlantı Adresi",
+          "type": "LINK",
+          "required": false,
+          "description": "Boşsa tıklanmaz",
+          "groupId": "soon"
+        },
+        {
+          "name": "scriptText",
+          "displayName": "İmza Yazısı",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki el yazısı satır (boşsa gizlenir)",
+          "defaultValue": "Bugün sürpriz, hep hatıra",
+          "groupId": "content"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Solmayan çiçekler, elle yapılmış hediyeler.",
+          "groupId": "content"
+        },
+        {
+          "name": "headingEmphasis",
+          "displayName": "Vurgulu Kelime",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlıkta italik ve gül rengi yazılacak kelime (boşsa vurgu yok)",
+          "defaultValue": "elle",
+          "groupId": "content"
+        },
+        {
+          "name": "subtext",
+          "displayName": "Alt Metin",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Kitle kendi buketinizi yapın ya da biz sizin için yapıp gönderelim. Her parça dükkânımızda elde hazırlanır.",
+          "groupId": "content"
+        },
+        {
+          "name": "primaryLink",
+          "displayName": "Birinci Buton",
+          "type": "LINK",
+          "required": false,
+          "description": "Gül renkli buton (kitler)",
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Kendin yap kitleri",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "buttons"
+        },
+        {
+          "name": "secondaryLink",
+          "displayName": "İkinci Buton",
+          "type": "LINK",
+          "required": false,
+          "description": "Çerçeveli buton (hazır çiçekler)",
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Hazırını gönderelim",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "buttons"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "media",
+          "name": "Görsel"
+        },
+        {
+          "id": "soon",
+          "name": "Çok Yakında Bağlantısı"
+        },
+        {
+          "id": "content",
+          "name": "İçerik"
+        },
+        {
+          "id": "buttons",
+          "name": "Butonlar"
+        }
+      ]
     }
   ],
   "customTypes": [
