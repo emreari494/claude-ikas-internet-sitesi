@@ -81,7 +81,14 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
    4. Editörde "Bağlan" butonu
    - Bölümler kodla yazılır, sayfaya yerleştirme ve yazı/görsel düzenleme Builder'da yapılır.
    - **Bilgisayarda (Claude Code masaüstü) yapılır**, bulut penceresinde değil: `ikas auth login` giriş anahtarı `~/.ikas/` altında saklanır, depoya girmez; `theme dev` sürekli açık kalmalı.
-   - Her kurulum adımı onayla. "Yayınla" butonuna onaysız basılmaz. Tema projesi depoda `bee-flower-shop/` klasöründe (22 Ekim 2026'da kullanıcının bilgisayarında `ikas theme init`, Standart şablon ile kuruldu; boş kalan `tema/` silinecek). `node_modules` ve gizli dosyalar depoya girmez. Yerel klasör OneDrive Masaüstü altında (`…\Desktop\Claude\ikas internet sitesi`); OneDrive senkronu yavaşlık/kilit sorunu çıkarabilir.
+   - Her kurulum adımı onayla. "Yayınla" butonuna onaysız basılmaz. `node_modules` ve gizli dosyalar depoya girmez.
+   - **Kurulum durumu (25 Ekim 2026):** 22 Ekim'deki OneDrive klasörü kayboldu (depoya hiç gönderilmemişti); sıfırdan yeniden kuruldu:
+     - Depo bilgisayara klonlandı: `C:\Users\user\claude-ikas-internet-sitesi` (OneDrive dışında, bilerek). Windows, PowerShell; Node 24.12, ikas CLI 0.0.30, Git 2.53. `ikas auth login` yapılmış durumda.
+     - Tema projesi: `bee-flower-shop/` (bu klasörün içinde), `ikas theme init -e <editör adresi>` ile **Standart** şablon.
+     - Bağlı tema: test mağazasında **"İlk Temam" (ikas Studio)**. Test mağazasında yayındaki tema "Kombos"; ona dokunulmaz, yedek.
+     - Çalıştırma: `cd bee-flower-shop` → `ikas theme dev` (port 5201'i başlatmayı sorarsa `Y`) → editörde "Bağlan". Terminal açık kalır; Q/S tuşları sunucuyu kapatır.
+     - 25 Ekim'de bağlantı kuruldu; Standart bölümler editörde "Aktarılmamış" listesinde görünüyor (Header, SingleHero, HeroSlider…). Henüz sayfaya bölüm eklenmedi.
+     - `bee-flower-shop/` henüz GitHub'a gönderilmedi; bilgisayardan gönderilecek.
    - Chrome'daki Claude ile Builder'da tıklayarak kurma fikri bırakıldı.
 4. Taslaktaki bölümler kod bileşenlerine dönüştürülecek: önce renk/font/menü/footer, sonra ana sayfa, ürün, kategori, sepet, Bee Bahçem sayfası.
 5. Açık işler: yazısız "bitmiş buket" fotoğrafları, gerçek yorumlar, kargo süresi teyidi, renkleri varyanta toplama (ikas Admin API ile mümkün).
@@ -91,6 +98,7 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
 
 - `taslak/` — onaylanacak HTML taslak ve kullandığı küçültülmüş görseller (`taslak/img/`).
 - `docs/TASARIM_DILI.md` — ürün görseli ve ambalaj tasarım kuralları.
+- `bee-flower-shop/` — ikas tema projesi (kod bileşenleri). Bilgisayarda oluşturuldu; depoya gönderilmesi bekleniyor.
 - `.claude/launch.json` — taslağı yerelde `python -m http.server` ile 5173 portunda açar.
 - Orijinal görseller ve marka dosyaları kullanıcının Google Drive'ında (`BEE - Tasarım`), depoda değil.
 
