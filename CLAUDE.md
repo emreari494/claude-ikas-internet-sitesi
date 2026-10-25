@@ -88,7 +88,7 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
      - Bağlı tema: test mağazasında **"İlk Temam" (ikas Studio)**. Test mağazasında yayındaki tema "Kombos"; ona dokunulmaz, yedek.
      - Çalıştırma: `cd bee-flower-shop` → `ikas theme dev` (port 5201'i başlatmayı sorarsa `Y`) → editörde "Bağlan". Terminal açık kalır; Q/S tuşları sunucuyu kapatır.
      - 25 Ekim'de bağlantı kuruldu; Standart bölümler editörde "Aktarılmamış" listesinde görünüyor (Header, SingleHero, HeroSlider…). Henüz sayfaya bölüm eklenmedi.
-     - `bee-flower-shop/` henüz GitHub'a gönderilmedi; bilgisayardan gönderilecek.
+     - `bee-flower-shop/` 25 Ekim'de bilgisayardan GitHub'a gönderildi (163 dosya; `node_modules` ve gizli dosya yok). `.ikas/theme.config.json` yalnızca editör adresi ve mağaza/tema kimliklerini içerir (gizli değil). Bilgisayarda git kimliği ayarlandı. Tema klasörünün kendi `CLAUDE.md`/`AGENTS.md`/`README.md` dosyaları var; kodlamaya başlamadan okunmalı.
    - Chrome'daki Claude ile Builder'da tıklayarak kurma fikri bırakıldı.
 4. Taslaktaki bölümler kod bileşenlerine dönüştürülecek: önce renk/font/menü/footer, sonra ana sayfa, ürün, kategori, sepet, Bee Bahçem sayfası.
 5. Açık işler: yazısız "bitmiş buket" fotoğrafları, gerçek yorumlar, kargo süresi teyidi, renkleri varyanta toplama (ikas Admin API ile mümkün).
@@ -98,7 +98,7 @@ Bu depo, Bee Flower Shop'un ikas üzerindeki sitesinin yeniden tasarımı içind
 
 - `taslak/` — onaylanacak HTML taslak ve kullandığı küçültülmüş görseller (`taslak/img/`).
 - `docs/TASARIM_DILI.md` — ürün görseli ve ambalaj tasarım kuralları.
-- `bee-flower-shop/` — ikas tema projesi (kod bileşenleri). Bilgisayarda oluşturuldu; depoya gönderilmesi bekleniyor.
+- `bee-flower-shop/` — ikas tema projesi (kod bileşenleri, Standart şablon). Kendi `CLAUDE.md`/`AGENTS.md` dosyalarını oku.
 - `.claude/launch.json` — taslağı yerelde `python -m http.server` ile 5173 portunda açar.
 - Orijinal görseller ve marka dosyaları kullanıcının Google Drive'ında (`BEE - Tasarım`), depoda değil.
 
