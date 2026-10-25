@@ -14,45 +14,18 @@ import SearchModal from "../../sub-components/SearchModal";
 import CartDrawer from "../../sub-components/CartDrawer";
 import AnnouncementBar from "../../sub-components/AnnouncementBar";
 
+// Shown until menu links are set in the editor; mirrors the draft's main menu.
 const DEMO_NAV = [
-  {
-    href: "/",
-    label: "Skincare",
-    type: "PAGE" as const,
-    openInNewTab: false,
-    subLinks: [
-      {
-        href: "/",
-        label: "Moisturizers",
-        type: "PAGE" as const,
-        openInNewTab: false,
-        subLinks: [
-          { href: "/", label: "Day Cream", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
-          { href: "/", label: "Night Cream", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
-        ],
-      },
-      { href: "/", label: "Serums", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
-      { href: "/", label: "Cleansers", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
-    ],
-  },
-  {
-    href: "/",
-    label: "Wellness",
-    type: "PAGE" as const,
-    openInNewTab: false,
-    subLinks: [],
-  },
-  {
-    href: "/",
-    label: "New In",
-    type: "PAGE" as const,
-    openInNewTab: false,
-    subLinks: [],
-  },
+  { href: "/", label: "Kendin Yap Kitleri", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
+  { href: "/", label: "Hazır Çiçekler", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
+  { href: "/", label: "Setler", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
+  { href: "/", label: "Malzemeler", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
+  { href: "/", label: "Bee Bahçem", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
+  { href: "/", label: "Buketini tasarla", type: "PAGE" as const, openInNewTab: false, subLinks: [] },
 ];
 
 export function Header({
-  logoText = "Congara",
+  logoText = "Bee Flowers",
   logoPosition = "left",
   logoImage,
   logoImageTransparent,
@@ -68,7 +41,7 @@ export function Header({
   mobileSignInLabel = "Sign In",
   mobileCartLabel = "Cart",
   popularTermsLabel = "Popular Searches",
-  popularTerms = "moisturizer, vitamin c, sunscreen, retinol, lip oil, cleanser",
+  popularTerms = "lilyum kiti, papatya kiti, mini saksı, tekli lale, buket, şönil tel",
   popularProductsLabel = "Popular Products",
   popularProducts,
   noResultsText = "No results found",

@@ -105,7 +105,7 @@
           "type": "TEXT",
           "required": false,
           "description": "Logo görseli yokken gösterilen metin",
-          "defaultValue": "ikas",
+          "defaultValue": "Bee Flowers",
           "groupId": "logo"
         },
         {
@@ -132,7 +132,47 @@
           "type": "LIST_OF_LINK",
           "required": false,
           "description": "Ana menü bağlantıları (3 seviyeye kadar destekler)",
-          "groupId": "nav"
+          "groupId": "nav",
+          "defaultValue": {
+            "links": [
+              {
+                "linkType": "PAGE",
+                "label": "Kendin Yap Kitleri",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Hazır Çiçekler",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Setler",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Malzemeler",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Bee Bahçem",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Buketini tasarla",
+                "pageType": "INDEX",
+                "subLinks": []
+              }
+            ]
+          }
         },
         {
           "name": "showSearch",
@@ -176,7 +216,7 @@
           "type": "COLOR",
           "required": false,
           "description": "Üst menü arka plan rengi (dolu durumda)",
-          "defaultValue": "#FAF8F5",
+          "defaultValue": "#F6F1E8",
           "groupId": "style"
         },
         {
@@ -247,7 +287,7 @@
           "type": "TEXT",
           "required": false,
           "description": "Virgülle ayrılmış popüler arama terimleri listesi (~8'e kadar)",
-          "defaultValue": "nemlendirici, c vitamini, güneş kremi, retinol, dudak yağı, temizleyici",
+          "defaultValue": "lilyum kiti, papatya kiti, mini saksı, tekli lale, buket, şönil tel",
           "groupId": "search-popular"
         },
         {
@@ -407,7 +447,7 @@
           "displayName": "Kargo Notu",
           "type": "TEXT",
           "required": false,
-          "defaultValue": "Kargo ücreti ödeme adımında hesaplanır",
+          "defaultValue": "1.500 TL üzeri kargo ücretsiz; kargo ücreti ödeme adımında hesaplanır",
           "groupId": "cart-texts"
         },
         {
@@ -470,14 +510,16 @@
           "displayName": "Duyuru 1 Metni",
           "type": "TEXT",
           "required": false,
-          "groupId": "announcement-1"
+          "groupId": "announcement-1",
+          "defaultValue": "1.500 TL üzeri ücretsiz kargo"
         },
         {
           "name": "announcement2Text",
           "displayName": "Duyuru 2 Metni",
           "type": "TEXT",
           "required": false,
-          "groupId": "announcement-2"
+          "groupId": "announcement-2",
+          "defaultValue": "El yapımı, solmayan çiçekler"
         },
         {
           "name": "announcementAutoPlay",
@@ -531,7 +573,7 @@
           "displayName": "Arka Plan Rengi",
           "type": "COLOR",
           "required": false,
-          "defaultValue": "#1C1917",
+          "defaultValue": "#F9E8EB",
           "groupId": "announcement-1"
         },
         {
@@ -539,7 +581,7 @@
           "displayName": "Metin Rengi",
           "type": "COLOR",
           "required": false,
-          "defaultValue": "#FFFFFF",
+          "defaultValue": "#8E4A5C",
           "groupId": "announcement-1"
         },
         {
@@ -554,7 +596,7 @@
           "displayName": "Arka Plan Rengi",
           "type": "COLOR",
           "required": false,
-          "defaultValue": "#1C1917",
+          "defaultValue": "#F9E8EB",
           "groupId": "announcement-2"
         },
         {
@@ -562,7 +604,7 @@
           "displayName": "Metin Rengi",
           "type": "COLOR",
           "required": false,
-          "defaultValue": "#FFFFFF",
+          "defaultValue": "#8E4A5C",
           "groupId": "announcement-2"
         },
         {
