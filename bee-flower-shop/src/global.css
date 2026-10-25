@@ -10,64 +10,92 @@
  *   - `:root { --var: value }` — variables are rewritten onto the component wrapper
  *     and inherit down its subtree. Use this for design tokens.
  *   - `@media`, `@supports`, `@container`, `@layer` — walked recursively.
- *   - `@keyframes`, `@font-face`, `@counter-style` — kept, but their NAMES get a
- *     `cc_<projectId>_` prefix; references in component CSS (font-family / animation /
- *     list-style) and font names inside custom properties are rewritten to match.
- *
- * What does NOT work (code components only style elements they own):
- *   - Top-level `body { ... }` / `html { ... }` rules — dropped.
- *   - Descendant selectors starting with `body` / `html` (e.g. `body .x`, `html.dark .y`) —
- *     emitted but never match, because the component wrapper is INSIDE body, not
- *     the other way around. Use a class on your own wrapper instead
- *     (e.g. add `dark` via JS and write `.dark .x`).
- *   - Document-wide resets, scrollbar tweaks, page backgrounds — belong to the theme.
- *
- * Loading order (all scoped to this project):
- *   1. Global CSS (this file) — lowest specificity
- *   2. Shared chunk CSS — multi-scope (.cc_a .sel, .cc_b .sel)
- *   3. Component CSS — single scope (.cc_id .sel) — highest specificity
- *
- * Component-scoped styles naturally override these globals.
- */
+ *   - `@keyframes`, `/* Marka fontları. Her aile iki dosya: latin + latin-ext (ğ, ş, İ gibi Türkçe harfler latin-ext'te). */
 
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
-  font-weight: 300 700;
+  font-weight: 400 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "DM Sans";
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTmf3ZGMZpg.woff2") format("woff2");
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Allura";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/allura/v23/9oRPNYsQpS4zjuA_iwgW.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Allura";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/allura/v23/9oRPNYsQpS4zjuA_hQgWDto.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
+  /* ─── Marka kiti ────────────────────────────────────────── */
+  --brand-cream:          #F6F1E8;  /* zemin, %60 */
+  --brand-pink:           #EB90A5;  /* birincil pembe, %25 */
+  --brand-rose:           #AC6174;  /* ikincil gül, butonlar */
+  --brand-sage:           #C5C89B;  /* adaçayı yeşili */
+  --brand-olive:          #8C846A;  /* zeytin */
+  --brand-honey:          #EAC26C;  /* bal sarısı, vurgu %5 — yalnız "Kendi buketinizi tasarlayın" */
+  --brand-ink:            #0E0C0B;  /* yazı */
+
   /* ─── Colors ────────────────────────────────────────────── */
-  --color-bg:             #FAF8F5;
+  --color-bg:             var(--brand-cream);
   --color-surface:        #FFFFFF;
-  --color-surface-alt:    #F2EDE8;
-  --color-border:         #E5DDD5;
-  --color-text-primary:   #1C1917;
-  --color-text-secondary: #6B6560;
-  --color-text-muted:     #A89E97;
-  --color-accent:         #C9A882;
-  --color-accent-dark:    #9C7B5A;
-  --color-accent-light:   #F7E9D6;
+  --color-surface-alt:    #EFE7DA;
+  --color-border:         #E3D8C6;
+  --color-text-primary:   var(--brand-ink);
+  --color-text-secondary: #5A5347;
+  --color-text-muted:     var(--brand-olive);
+  --color-accent:         var(--brand-rose);
+  --color-accent-dark:    #8E4B5D;
+  --color-accent-light:   #F9E3E9;
   --color-error:          #B91C1C;
   --color-success:        #15803D;
-  --color-overlay-warm:   #5B2709;
+  --color-overlay-warm:   #4A2530;
 
   /* ─── Typography ────────────────────────────────────────── */
   --font-display: "Playfair Display", Georgia, serif;
-  --font-body:    "DM Sans", system-ui, sans-serif;
-  --font-label:   "DM Sans", system-ui, sans-serif;
+  --font-body:    "Montserrat", system-ui, sans-serif;
+  --font-label:   "Montserrat", system-ui, sans-serif;
+  --font-script:  "Allura", cursive;  /* imza dokunuşu, az kullan */
 
   --text-hero:    clamp(48px, 7vw, 96px);
   --text-h1:      clamp(36px, 5vw, 64px);
