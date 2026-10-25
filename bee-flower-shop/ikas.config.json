@@ -6998,6 +6998,1536 @@
           "name": "Butonlar"
         }
       ]
+    },
+    {
+      "id": "4beakgdp-gacmuxgecq",
+      "name": "BeeTrustStrip",
+      "entry": "./src/components/BeeTrustStrip/index.tsx",
+      "styles": "./src/components/BeeTrustStrip/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "item1Icon",
+          "displayName": "Simge",
+          "type": "ENUM",
+          "required": false,
+          "defaultValue": "heart",
+          "groupId": "item1",
+          "enumTypeId": "WJmfJCA67f"
+        },
+        {
+          "name": "item1Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu madde gizlenir",
+          "defaultValue": "El yapımı",
+          "groupId": "item1"
+        },
+        {
+          "name": "item1Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Her parça tek tek",
+          "groupId": "item1"
+        },
+        {
+          "name": "item2Icon",
+          "displayName": "Simge",
+          "type": "ENUM",
+          "required": false,
+          "defaultValue": "clock",
+          "groupId": "item2",
+          "enumTypeId": "WJmfJCA67f"
+        },
+        {
+          "name": "item2Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu madde gizlenir",
+          "defaultValue": "Solmaz",
+          "groupId": "item2"
+        },
+        {
+          "name": "item2Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Su ve bakım istemez",
+          "groupId": "item2"
+        },
+        {
+          "name": "item3Icon",
+          "displayName": "Simge",
+          "type": "ENUM",
+          "required": false,
+          "defaultValue": "qr",
+          "groupId": "item3",
+          "enumTypeId": "WJmfJCA67f"
+        },
+        {
+          "name": "item3Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu madde gizlenir",
+          "defaultValue": "QR ile video",
+          "groupId": "item3"
+        },
+        {
+          "name": "item3Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Adım adım anlatım",
+          "groupId": "item3"
+        },
+        {
+          "name": "item4Icon",
+          "displayName": "Simge",
+          "type": "ENUM",
+          "required": false,
+          "defaultValue": "truck",
+          "groupId": "item4",
+          "enumTypeId": "WJmfJCA67f"
+        },
+        {
+          "name": "item4Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu madde gizlenir",
+          "defaultValue": "Türkiye geneli",
+          "groupId": "item4"
+        },
+        {
+          "name": "item4Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Ertesi iş günü kargoda",
+          "groupId": "item4"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "item1",
+          "name": "1. Madde"
+        },
+        {
+          "id": "item2",
+          "name": "2. Madde"
+        },
+        {
+          "id": "item3",
+          "name": "3. Madde"
+        },
+        {
+          "id": "item4",
+          "name": "4. Madde"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-REtMOIY9YI",
+      "name": "BeeDesignSoon",
+      "entry": "./src/components/BeeDesignSoon/index.tsx",
+      "styles": "./src/components/BeeDesignSoon/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "badge",
+          "displayName": "Rozet",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Çok yakında",
+          "groupId": "content"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Kendi buketinizi tasarlayın",
+          "groupId": "content"
+        },
+        {
+          "name": "text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Çiçeklerinizi, renklerinizi seçip buketinizi ekranda oluşturacağınız araçlar hazırlanıyor. Açıldığında ilk siz haberdar olun.",
+          "groupId": "content"
+        },
+        {
+          "name": "buttonLink",
+          "displayName": "Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Açılınca haber ver",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "content"
+        },
+        {
+          "name": "showBee",
+          "displayName": "Arı Çizimini Göster",
+          "type": "BOOLEAN",
+          "required": false,
+          "defaultValue": true,
+          "groupId": "content"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "content",
+          "name": "İçerik"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-3SztolEYOV",
+      "name": "BeeTwoPaths",
+      "entry": "./src/components/BeeTwoPaths/index.tsx",
+      "styles": "./src/components/BeeTwoPaths/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "İki yol, iki hediye",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Nasıl hediye etmek istersiniz?",
+          "groupId": "head"
+        },
+        {
+          "name": "path1Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "path1"
+        },
+        {
+          "name": "path1ImageAlt",
+          "displayName": "Görsel Açıklaması",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "",
+          "groupId": "path1"
+        },
+        {
+          "name": "path1Kicker",
+          "displayName": "Üst Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Siz yapın, biz anlatalım",
+          "groupId": "path1"
+        },
+        {
+          "name": "path1Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Kendin yap kitleri",
+          "groupId": "path1"
+        },
+        {
+          "name": "path1Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Kutudan bir buket çıkar. QR'ı okutun, videoyla yapın.",
+          "groupId": "path1"
+        },
+        {
+          "name": "path1Link",
+          "displayName": "Bağlantı",
+          "type": "LINK",
+          "required": false,
+          "description": "Kartın gideceği sayfa",
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Kendin yap kitleri",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "path1"
+        },
+        {
+          "name": "path2Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "path2"
+        },
+        {
+          "name": "path2ImageAlt",
+          "displayName": "Görsel Açıklaması",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "",
+          "groupId": "path2"
+        },
+        {
+          "name": "path2Kicker",
+          "displayName": "Üst Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Biz sizin için yaptık",
+          "groupId": "path2"
+        },
+        {
+          "name": "path2Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Hazır çiçekler",
+          "groupId": "path2"
+        },
+        {
+          "name": "path2Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Buket, saksı, sepet ve tekli çiçekler. Paketli gelir.",
+          "groupId": "path2"
+        },
+        {
+          "name": "path2Link",
+          "displayName": "Bağlantı",
+          "type": "LINK",
+          "required": false,
+          "description": "Kartın gideceği sayfa",
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Hazır çiçekler",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "path2"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "path1",
+          "name": "1. Kart (Kit)"
+        },
+        {
+          "id": "path2",
+          "name": "2. Kart (Hazır)"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-3hNk8VQYhV",
+      "name": "BeeDivider",
+      "entry": "./src/components/BeeDivider/index.tsx",
+      "styles": "./src/components/BeeDivider/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "showBee",
+          "displayName": "Arı Çizimini Göster",
+          "type": "BOOLEAN",
+          "required": false,
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-kP5hZUEPoD",
+      "name": "BeeProductGrid",
+      "entry": "./src/components/BeeProductGrid/index.tsx",
+      "styles": "./src/components/BeeProductGrid/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "Çok satanlar",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Kendin yap kitleri",
+          "groupId": "head"
+        },
+        {
+          "name": "lead",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın altındaki kısa yazı (boşsa gizlenir)",
+          "defaultValue": "",
+          "groupId": "head"
+        },
+        {
+          "name": "allLink",
+          "displayName": "\"Tümü\" Bağlantısı",
+          "type": "LINK",
+          "required": false,
+          "description": "Sağ üstteki bağlantı (boşsa gizlenir)",
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Tümü →",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "head"
+        },
+        {
+          "name": "products",
+          "displayName": "Ürünler",
+          "type": "PRODUCT_LIST",
+          "required": false,
+          "description": "Gösterilecek ürünler; telefonda 2, bilgisayarda 4 sütun",
+          "groupId": "products"
+        },
+        {
+          "name": "cardTag",
+          "displayName": "Kart Etiketi",
+          "type": "TEXT",
+          "required": false,
+          "description": "Kartların köşesindeki küçük etiket, örn. \"Kendin yap\" (boşsa gizlenir)",
+          "defaultValue": "",
+          "groupId": "products"
+        },
+        {
+          "name": "cardTagSage",
+          "displayName": "Etiket Yeşil Olsun",
+          "type": "BOOLEAN",
+          "required": false,
+          "defaultValue": true,
+          "groupId": "products"
+        },
+        {
+          "name": "saleLabel",
+          "displayName": "İndirim Etiketi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "İndirim",
+          "groupId": "products"
+        },
+        {
+          "name": "soldOutLabel",
+          "displayName": "Tükendi Etiketi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Tükendi",
+          "groupId": "products"
+        },
+        {
+          "name": "categories",
+          "displayName": "Kategori Daireleri",
+          "type": "CATEGORY_LIST",
+          "required": false,
+          "description": "Ürünlerin üstünde yuvarlak kategori görselleri (boşsa gizlenir)",
+          "groupId": "categories"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "products",
+          "name": "Ürünler"
+        },
+        {
+          "id": "categories",
+          "name": "Kategoriler"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-bBUkLOeo2q",
+      "name": "BeeHowItWorks",
+      "entry": "./src/components/BeeHowItWorks/index.tsx",
+      "styles": "./src/components/BeeHowItWorks/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "Kit nasıl çalışır?",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Kutudan bir buket çıkar",
+          "groupId": "head"
+        },
+        {
+          "name": "step1Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "step1"
+        },
+        {
+          "name": "step1Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu adım gizlenir",
+          "defaultValue": "Kutuyu açın",
+          "groupId": "step1"
+        },
+        {
+          "name": "step1Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Renkleri seçilmiş şönil, tel, bant, tomurcuk, ambalaj ve not kartı içindedir. Ek malzeme gerekmez.",
+          "groupId": "step1"
+        },
+        {
+          "name": "step2Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "step2"
+        },
+        {
+          "name": "step2Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu adım gizlenir",
+          "defaultValue": "QR'ı okutun",
+          "groupId": "step2"
+        },
+        {
+          "name": "step2Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Video anlatımı telefonunuzda açın. Her çiçeği adım adım şekillendirin.",
+          "groupId": "step2"
+        },
+        {
+          "name": "step3Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "step3"
+        },
+        {
+          "name": "step3Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu adım gizlenir",
+          "defaultValue": "Buketi sarın",
+          "groupId": "step3"
+        },
+        {
+          "name": "step3Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Kalpli ambalaja sarın, notunuzu yazın. Solmayan bir hediye hazır.",
+          "groupId": "step3"
+        },
+        {
+          "name": "step4Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "step4"
+        },
+        {
+          "name": "step4Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu adım gizlenir",
+          "defaultValue": "Bahçenizi tasarlayın",
+          "groupId": "step4"
+        },
+        {
+          "name": "step4Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Yaptığınız çiçeği Bee Bahçem oyununda dijital bahçenize ekleyin. Yakında.",
+          "groupId": "step4"
+        },
+        {
+          "name": "showGame",
+          "displayName": "Oyun Bandını Göster",
+          "type": "BOOLEAN",
+          "required": false,
+          "defaultValue": true,
+          "groupId": "game"
+        },
+        {
+          "name": "gameEyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Yakında · Oyun",
+          "groupId": "game"
+        },
+        {
+          "name": "gameTitle",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Bee Bahçem",
+          "groupId": "game"
+        },
+        {
+          "name": "gameText",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Satın aldığınız çiçeklerle kendi bahçenizi tasarlayın. Kutudaki QR kod sizi oyuna götürecek.",
+          "groupId": "game"
+        },
+        {
+          "name": "gameLink",
+          "displayName": "Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Oyunu keşfedin",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "game"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "step1",
+          "name": "1. Adım"
+        },
+        {
+          "id": "step2",
+          "name": "2. Adım"
+        },
+        {
+          "id": "step3",
+          "name": "3. Adım"
+        },
+        {
+          "id": "step4",
+          "name": "4. Adım"
+        },
+        {
+          "id": "game",
+          "name": "Oyun Bandı"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-ojXhOqB5av",
+      "name": "BeeSets",
+      "entry": "./src/components/BeeSets/index.tsx",
+      "styles": "./src/components/BeeSets/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "Örnek setler",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Kit + hazır çiçek setleri",
+          "groupId": "head"
+        },
+        {
+          "name": "lead",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın altındaki kısa yazı (boşsa gizlenir)",
+          "defaultValue": "Biri yapmak için, biri hemen hediye etmek için. Tek pakette.",
+          "groupId": "head"
+        },
+        {
+          "name": "set1Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "set1"
+        },
+        {
+          "name": "set1Eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Örnek set",
+          "groupId": "set1"
+        },
+        {
+          "name": "set1Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu set gizlenir",
+          "defaultValue": "Birini yap, birini hediye et",
+          "groupId": "set1"
+        },
+        {
+          "name": "set1Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Lilyum buket kiti + hazır lilyum mini saksı. Buketi siz yapın, saksıyı hemen hediye edin.",
+          "groupId": "set1"
+        },
+        {
+          "name": "set1Note",
+          "displayName": "Fiyat Notu",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Set fiyatı belirlenecek",
+          "groupId": "set1"
+        },
+        {
+          "name": "set1Link",
+          "displayName": "Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Seti inceleyin",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "set1"
+        },
+        {
+          "name": "set2Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "set2"
+        },
+        {
+          "name": "set2Eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Örnek set",
+          "groupId": "set2"
+        },
+        {
+          "name": "set2Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu set gizlenir",
+          "defaultValue": "Tek çiçekle başla",
+          "groupId": "set2"
+        },
+        {
+          "name": "set2Text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Hazır tekli lale + papatya yapım kiti. Küçük bir teşekkür ve bir akşam aktivitesi.",
+          "groupId": "set2"
+        },
+        {
+          "name": "set2Note",
+          "displayName": "Fiyat Notu",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Set fiyatı belirlenecek",
+          "groupId": "set2"
+        },
+        {
+          "name": "set2Link",
+          "displayName": "Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Seti inceleyin",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "set2"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "set1",
+          "name": "1. Set"
+        },
+        {
+          "id": "set2",
+          "name": "2. Set"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-EZRTac5wDh",
+      "name": "BeeGiftFor",
+      "entry": "./src/components/BeeGiftFor/index.tsx",
+      "styles": "./src/components/BeeGiftFor/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "Kime hediye?",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Kimi mutlu edeceksiniz?",
+          "groupId": "head"
+        },
+        {
+          "name": "chips",
+          "displayName": "Kişi Bağlantıları",
+          "type": "LIST_OF_LINK",
+          "required": false,
+          "description": "Başlığın altındaki yuvarlak düğmeler (Sevgiliye, Anneye…); her biri bir kategoriye bağlanabilir",
+          "defaultValue": {
+            "links": [
+              {
+                "linkType": "PAGE",
+                "label": "Sevgiliye",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Anneye",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Arkadaşa",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Kendine",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Öğretmene",
+                "pageType": "INDEX",
+                "subLinks": []
+              },
+              {
+                "linkType": "PAGE",
+                "label": "Yeni eve",
+                "pageType": "INDEX",
+                "subLinks": []
+              }
+            ]
+          },
+          "groupId": "chips"
+        },
+        {
+          "name": "products",
+          "displayName": "Ürünler",
+          "type": "PRODUCT_LIST",
+          "required": false,
+          "description": "Telefonda yana kayan, bilgisayarda 4 sütun",
+          "groupId": "products"
+        },
+        {
+          "name": "saleLabel",
+          "displayName": "İndirim Etiketi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "İndirim",
+          "groupId": "products"
+        },
+        {
+          "name": "soldOutLabel",
+          "displayName": "Tükendi Etiketi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Tükendi",
+          "groupId": "products"
+        },
+        {
+          "name": "occ1Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "occ1"
+        },
+        {
+          "name": "occ1Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu kart gizlenir",
+          "defaultValue": "Sevgililer Günü",
+          "groupId": "occ1"
+        },
+        {
+          "name": "occ1Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "14 Şubat · hazır buketler",
+          "groupId": "occ1"
+        },
+        {
+          "name": "occ1Link",
+          "displayName": "Bağlantı",
+          "type": "LINK",
+          "required": false,
+          "groupId": "occ1"
+        },
+        {
+          "name": "occ2Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "occ2"
+        },
+        {
+          "name": "occ2Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu kart gizlenir",
+          "defaultValue": "Anneler Günü",
+          "groupId": "occ2"
+        },
+        {
+          "name": "occ2Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Mayıs · saksı ve sepetler",
+          "groupId": "occ2"
+        },
+        {
+          "name": "occ2Link",
+          "displayName": "Bağlantı",
+          "type": "LINK",
+          "required": false,
+          "groupId": "occ2"
+        },
+        {
+          "name": "occ3Image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "occ3"
+        },
+        {
+          "name": "occ3Title",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu kart gizlenir",
+          "defaultValue": "Doğum günü",
+          "groupId": "occ3"
+        },
+        {
+          "name": "occ3Text",
+          "displayName": "Alt Yazı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Her gün · notlu hediyeler",
+          "groupId": "occ3"
+        },
+        {
+          "name": "occ3Link",
+          "displayName": "Bağlantı",
+          "type": "LINK",
+          "required": false,
+          "groupId": "occ3"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "chips",
+          "name": "Kişiler"
+        },
+        {
+          "id": "products",
+          "name": "Ürünler"
+        },
+        {
+          "id": "occ1",
+          "name": "Özel Gün 1"
+        },
+        {
+          "id": "occ2",
+          "name": "Özel Gün 2"
+        },
+        {
+          "id": "occ3",
+          "name": "Özel Gün 3"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-vsb5s3EVv7",
+      "name": "BeeTogether",
+      "entry": "./src/components/BeeTogether/index.tsx",
+      "styles": "./src/components/BeeTogether/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "media"
+        },
+        {
+          "name": "imageAlt",
+          "displayName": "Görsel Açıklaması",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Bir çift masada mavi ve pembe şönil buketlerini birlikte yapıyor",
+          "groupId": "media"
+        },
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "İki kişilik setler",
+          "groupId": "content"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Birlikte yapın,",
+          "groupId": "content"
+        },
+        {
+          "name": "headingScript",
+          "displayName": "Başlık (El Yazısı Kısmı)",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "birlikte saklayın",
+          "groupId": "content"
+        },
+        {
+          "name": "text",
+          "displayName": "Açıklama",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Bir akşam aktivitesi ve sonunda iki buket. Sevgilinizle ya da en yakın arkadaşınızla.",
+          "groupId": "content"
+        },
+        {
+          "name": "bullet1",
+          "displayName": "Madde 1",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Toplam 130 şönil, iki ayrı renk",
+          "groupId": "content"
+        },
+        {
+          "name": "bullet2",
+          "displayName": "Madde 2",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "İki kişilik ambalaj ve not kartları",
+          "groupId": "content"
+        },
+        {
+          "name": "bullet3",
+          "displayName": "Madde 3",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "QR ile video anlatım",
+          "groupId": "content"
+        },
+        {
+          "name": "primaryLink",
+          "displayName": "Birinci Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Sevgilinle Yap",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "buttons"
+        },
+        {
+          "name": "secondaryLink",
+          "displayName": "İkinci Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Arkadaşınla Yap",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "buttons"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "media",
+          "name": "Görsel"
+        },
+        {
+          "id": "content",
+          "name": "İçerik"
+        },
+        {
+          "id": "buttons",
+          "name": "Butonlar"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-ESD5iQHC4v",
+      "name": "BeeReviews",
+      "entry": "./src/components/BeeReviews/index.tsx",
+      "styles": "./src/components/BeeReviews/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "Müşterilerimiz anlatıyor",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Hediyeyi alanlar ne dedi?",
+          "groupId": "head"
+        },
+        {
+          "name": "showSample",
+          "displayName": "\"Örnek yorum\" Etiketini Göster",
+          "type": "BOOLEAN",
+          "required": false,
+          "defaultValue": true,
+          "groupId": "head"
+        },
+        {
+          "name": "sampleLabel",
+          "displayName": "Örnek Etiketi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Örnek yorum",
+          "groupId": "head"
+        },
+        {
+          "name": "rev1Text",
+          "displayName": "Yorum",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu yorum gizlenir",
+          "defaultValue": "Annem için aldım, aylar geçti hâlâ ilk günkü gibi duruyor.",
+          "groupId": "rev1"
+        },
+        {
+          "name": "rev1Source",
+          "displayName": "Ürün / Kişi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Hazır lilyum mini saksı",
+          "groupId": "rev1"
+        },
+        {
+          "name": "rev1Stars",
+          "displayName": "Yıldız (1–5)",
+          "type": "NUMBER",
+          "required": false,
+          "defaultValue": 5,
+          "groupId": "rev1"
+        },
+        {
+          "name": "rev2Text",
+          "displayName": "Yorum",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu yorum gizlenir",
+          "defaultValue": "Sevgilimle bir akşam oturup yaptık. Video çok açıklayıcıydı.",
+          "groupId": "rev2"
+        },
+        {
+          "name": "rev2Source",
+          "displayName": "Ürün / Kişi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Sevgilinle Yap seti",
+          "groupId": "rev2"
+        },
+        {
+          "name": "rev2Stars",
+          "displayName": "Yıldız (1–5)",
+          "type": "NUMBER",
+          "required": false,
+          "defaultValue": 5,
+          "groupId": "rev2"
+        },
+        {
+          "name": "rev3Text",
+          "displayName": "Yorum",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu yorum gizlenir",
+          "defaultValue": "Paketleme çok özenliydi, not kartı ayrı bir incelik olmuş.",
+          "groupId": "rev3"
+        },
+        {
+          "name": "rev3Source",
+          "displayName": "Ürün / Kişi",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Pembe lilyum buket kiti",
+          "groupId": "rev3"
+        },
+        {
+          "name": "rev3Stars",
+          "displayName": "Yıldız (1–5)",
+          "type": "NUMBER",
+          "required": false,
+          "defaultValue": 5,
+          "groupId": "rev3"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "rev1",
+          "name": "1. Yorum"
+        },
+        {
+          "id": "rev2",
+          "name": "2. Yorum"
+        },
+        {
+          "id": "rev3",
+          "name": "3. Yorum"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-1tTLW8BeCi",
+      "name": "BeeStory",
+      "entry": "./src/components/BeeStory/index.tsx",
+      "styles": "./src/components/BeeStory/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "image",
+          "displayName": "Görsel",
+          "type": "IMAGE",
+          "required": false,
+          "groupId": "media"
+        },
+        {
+          "name": "imageAlt",
+          "displayName": "Görsel Açıklaması",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Dükkânda elde hazırlanmış pembe şönil buket",
+          "groupId": "media"
+        },
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Atölyemizden",
+          "groupId": "content"
+        },
+        {
+          "name": "scriptText",
+          "displayName": "İmza Yazısı",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Sevgiyle yapıldı",
+          "groupId": "content"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Her çiçek, küçük dükkânımızda elde şekillenir.",
+          "groupId": "content"
+        },
+        {
+          "name": "text1",
+          "displayName": "Paragraf 1",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Şönil teli renk renk ayırıyor, her kiti tek tek sayıp paketliyoruz. Hazır çiçeklerimizi de aynı masada elle büküyoruz.",
+          "groupId": "content"
+        },
+        {
+          "name": "text2",
+          "displayName": "Paragraf 2",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "El yapımı olduğu için iki çiçek hiçbir zaman birebir aynı olmaz. Biz bunu bir kusur olarak görmüyoruz.",
+          "groupId": "content"
+        },
+        {
+          "name": "link",
+          "displayName": "Buton",
+          "type": "LINK",
+          "required": false,
+          "defaultValue": {
+            "linkType": "PAGE",
+            "label": "Hikâyemizi okuyun",
+            "pageType": "INDEX",
+            "subLinks": []
+          },
+          "groupId": "content"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "media",
+          "name": "Görsel"
+        },
+        {
+          "id": "content",
+          "name": "İçerik"
+        }
+      ]
+    },
+    {
+      "id": "4beakgdp-ho7zZvokhl",
+      "name": "BeeFaq",
+      "entry": "./src/components/BeeFaq/index.tsx",
+      "styles": "./src/components/BeeFaq/styles.css",
+      "type": "section",
+      "props": [
+        {
+          "name": "eyebrow",
+          "displayName": "Üst Etiket",
+          "type": "TEXT",
+          "required": false,
+          "description": "Başlığın üstündeki küçük yazı (boşsa gizlenir)",
+          "defaultValue": "Sık sorulanlar",
+          "groupId": "head"
+        },
+        {
+          "name": "heading",
+          "displayName": "Başlık",
+          "type": "TEXT",
+          "required": true,
+          "defaultValue": "Aklınıza takılanlar",
+          "groupId": "head"
+        },
+        {
+          "name": "q1Question",
+          "displayName": "Soru",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu soru gizlenir",
+          "defaultValue": "Siparişim ne zaman kargoya verilir?",
+          "groupId": "q1"
+        },
+        {
+          "name": "q1Answer",
+          "displayName": "Cevap",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Hafta içi verilen siparişler ertesi iş günü kargoya teslim edilir. Türkiye'nin her yerine gönderiyoruz.",
+          "groupId": "q1"
+        },
+        {
+          "name": "q2Question",
+          "displayName": "Soru",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu soru gizlenir",
+          "defaultValue": "Kitte kaç şönil var, ek malzeme gerekir mi?",
+          "groupId": "q2"
+        },
+        {
+          "name": "q2Answer",
+          "displayName": "Cevap",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Lilyum buket kitlerinde 65 adet 30 cm şönil tel bulunur. Tel, bant, tomurcuk, ambalaj ve not kartı da kutudadır. Ek malzeme gerekmez.",
+          "groupId": "q2"
+        },
+        {
+          "name": "q3Question",
+          "displayName": "Soru",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu soru gizlenir",
+          "defaultValue": "Video anlatıma nasıl ulaşırım?",
+          "groupId": "q3"
+        },
+        {
+          "name": "q3Answer",
+          "displayName": "Cevap",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Kutudaki QR kodu telefonunuzun kamerasıyla okutun. Anlatım videosu açılır.",
+          "groupId": "q3"
+        },
+        {
+          "name": "q4Question",
+          "displayName": "Soru",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu soru gizlenir",
+          "defaultValue": "Çiçekler solar mı, bakım ister mi?",
+          "groupId": "q4"
+        },
+        {
+          "name": "q4Answer",
+          "displayName": "Cevap",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Şönil çiçekler solmaz, su ya da güneş istemez. Tozunu yumuşak bir fırçayla alabilirsiniz.",
+          "groupId": "q4"
+        },
+        {
+          "name": "q5Question",
+          "displayName": "Soru",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu soru gizlenir",
+          "defaultValue": "İade ve değişim nasıl olur?",
+          "groupId": "q5"
+        },
+        {
+          "name": "q5Answer",
+          "displayName": "Cevap",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "Teslimattan itibaren 14 gün içinde iade ya da değişim yapabilirsiniz.",
+          "groupId": "q5"
+        },
+        {
+          "name": "q6Question",
+          "displayName": "Soru",
+          "type": "TEXT",
+          "required": false,
+          "description": "Boşsa bu soru gizlenir",
+          "defaultValue": "",
+          "groupId": "q6"
+        },
+        {
+          "name": "q6Answer",
+          "displayName": "Cevap",
+          "type": "TEXT",
+          "required": false,
+          "defaultValue": "",
+          "groupId": "q6"
+        }
+      ],
+      "propGroups": [
+        {
+          "id": "head",
+          "name": "Başlık"
+        },
+        {
+          "id": "q1",
+          "name": "1. Soru"
+        },
+        {
+          "id": "q2",
+          "name": "2. Soru"
+        },
+        {
+          "id": "q3",
+          "name": "3. Soru"
+        },
+        {
+          "id": "q4",
+          "name": "4. Soru"
+        },
+        {
+          "id": "q5",
+          "name": "5. Soru"
+        },
+        {
+          "id": "q6",
+          "name": "6. Soru"
+        }
+      ]
     }
   ],
   "customTypes": [
@@ -7246,6 +8776,20 @@
       "enumOptions": {
         "Cover": "cover",
         "Contain": "contain"
+      },
+      "isDynamic": false
+    },
+    {
+      "id": "WJmfJCA67f",
+      "name": "BeeIcon",
+      "type": "enum",
+      "enumOptions": {
+        "Kalp (el yapımı)": "heart",
+        "Saat (solmaz)": "clock",
+        "QR kod": "qr",
+        "Kargo kamyonu": "truck",
+        "Hediye": "gift",
+        "İade oku": "return"
       },
       "isDynamic": false
     }

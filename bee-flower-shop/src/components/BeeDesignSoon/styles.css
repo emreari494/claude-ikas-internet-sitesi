@@ -1,0 +1,72 @@
+.bee-design-sec {
+  padding-top: 1.75rem;
+}
+
+.bee-design {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  overflow: hidden;
+  padding: 1.625rem 1.25rem 1.5rem;
+  border-radius: var(--bee-radius);
+  background: var(--brand-honey);
+  color: var(--color-text-primary);
+}
+
+.bee-design__badge {
+  justify-self: start;
+  padding: 0.3125rem 0.6875rem;
+  border-radius: 999px;
+  background: var(--color-text-primary);
+  color: var(--brand-honey);
+  font-size: 0.65625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bee-design__title {
+  max-width: 12ch;
+  font-size: clamp(1.75rem, 7.5vw, 2.625rem);
+}
+
+.bee-design__text {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 0.875rem;
+  color: #3D3420;
+}
+
+.bee-design__btn {
+  justify-self: start;
+}
+
+.bee-design .bee-design__bee {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.625rem;
+  width: 5.25rem;
+  height: 3.9375rem;
+  transform: rotate(12deg);
+}
+
+@media (min-width: 768px) {
+  .bee-design {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 2.5rem;
+  }
+
+  .bee-design > :not(.bee-design__bee) {
+    grid-column: 1;
+  }
+
+  .bee-design .bee-design__bee {
+    position: static;
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    width: 7.5rem;
+    height: 5.625rem;
+  }
+}

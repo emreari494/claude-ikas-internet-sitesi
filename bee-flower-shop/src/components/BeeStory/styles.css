@@ -1,0 +1,41 @@
+.bee-story {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.bee-story__media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--bee-radius);
+}
+
+.bee-story__script {
+  display: block;
+  font-size: 2.625rem;
+}
+
+.bee-story__title {
+  margin-bottom: 0.75rem;
+}
+
+.bee-story__text {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--color-text-secondary);
+}
+
+.bee-story__text + .bee-story__text {
+  margin-top: 0.625rem;
+}
+
+.bee-story__btn {
+  margin-top: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .bee-story {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3rem;
+  }
+}

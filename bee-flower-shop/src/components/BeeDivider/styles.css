@@ -1,0 +1,15 @@
+/* Şönil tel gibi kıvrımlı pembe çizgi, ortada arı. */
+.bee-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 26.25rem;
+  margin: 2.75rem auto 0;
+  padding-inline: 1rem;
+}
+
+.bee-divider__wave {
+  flex: 1;
+  height: 0.625rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M0 5q6-5 12 0t12 0' fill='none' stroke='%23EB90A5' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center / 1.5rem 0.625rem;
+}

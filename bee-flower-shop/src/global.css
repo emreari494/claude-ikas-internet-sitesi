@@ -75,6 +75,10 @@
   --brand-olive:          #8C846A;  /* zeytin */
   --brand-honey:          #EAC26C;  /* bal sarısı, vurgu %5 — yalnız "Kendi buketinizi tasarlayın" */
   --brand-ink:            #0E0C0B;  /* yazı */
+  --brand-paper:          #FFFDF9;  /* kart zemini */
+  --brand-blush:          #F9E8EB;  /* açık pembe bant */
+  --brand-sage-soft:      #EEEFDF;  /* açık adaçayı bant */
+  --bee-radius:           14px;
 
   /* ─── Colors ────────────────────────────────────────────── */
   --color-bg:             var(--brand-cream);
@@ -221,4 +225,207 @@
 .hero-slider--height-auto .hero-slide-content-wrap {
   position: absolute;
   inset: 0;
+}
+
+/* ─── Bee ortak parçaları ───────────────────────────────
+ * Bee* bölümlerinin paylaştığı başlık, buton ve yer tutucu stilleri
+ * (taslak/index.html ile aynı ölçüler).
+ */
+
+.bee-sec {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.bee-wrap {
+  max-width: 73.75rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.bee-blk {
+  padding-block: 3rem 0.5rem;
+}
+
+.bee-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.125rem;
+}
+
+.bee-eyebrow {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.bee-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 6.5vw, 2.375rem);
+  font-weight: 500;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.bee-h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.bee-lead {
+  margin: 0.375rem 0 0;
+  max-width: 52ch;
+  color: var(--color-text-secondary);
+}
+
+.bee-head__link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bee-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.bee-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1.375rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.bee-btn:active {
+  transform: scale(0.98);
+}
+
+.bee-btn:focus-visible,
+.bee-focus:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.bee-btn--primary {
+  background: var(--color-accent);
+  color: #FFFFFF;
+}
+
+.bee-btn--primary:hover {
+  background: var(--color-accent-dark);
+}
+
+.bee-btn--ghost {
+  border-color: var(--color-text-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.bee-btn--ghost:hover {
+  background: var(--color-text-primary);
+  color: var(--brand-paper);
+}
+
+.bee-btn--dark {
+  background: var(--color-text-primary);
+  color: var(--brand-paper);
+}
+
+.bee-btn--dark:hover {
+  background: #2A2522;
+}
+
+/* Görsel yüklenmemişken çizgili yer tutucu */
+.bee-ph {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(135deg, var(--brand-sage-soft) 0 10px, #F3F2E6 10px 20px);
+  border: 1px dashed var(--color-text-muted);
+  border-radius: 12px;
+}
+
+.bee-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Yatay kaydırılan satır (telefonda) */
+.bee-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 68%;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-inline: -1rem;
+  padding: 0 1rem 0.375rem;
+  scrollbar-width: none;
+}
+
+.bee-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.bee-rail > * {
+  scroll-snap-align: start;
+}
+
+.bee-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.125rem 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .bee-wrap {
+    padding-inline: 1.75rem;
+  }
+
+  .bee-rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    gap: 1.125rem;
+  }
+
+  .bee-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem 1.125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bee-btn {
+    transition: none;
+  }
 }

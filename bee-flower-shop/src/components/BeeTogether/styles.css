@@ -1,0 +1,73 @@
+.bee-together {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--bee-radius);
+  background: var(--brand-blush);
+}
+
+.bee-together__media {
+  aspect-ratio: 4 / 3;
+}
+
+.bee-together__media .bee-ph {
+  border: 0;
+  border-radius: 0;
+}
+
+.bee-together__text {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.5rem 1.25rem 1.625rem;
+}
+
+.bee-together__title {
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+}
+
+.bee-together__script {
+  font-size: 1.25em;
+}
+
+.bee-together__desc {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.bee-together__list {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.84375rem;
+}
+
+.bee-together__item::before {
+  content: "♥";
+  margin-right: 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--color-accent);
+}
+
+.bee-together__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .bee-together {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+  }
+
+  .bee-together__media {
+    height: 100%;
+    aspect-ratio: auto;
+    min-height: 22rem;
+  }
+
+  .bee-together__text {
+    padding: 2.5rem;
+  }
+}

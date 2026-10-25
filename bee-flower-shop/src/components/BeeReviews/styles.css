@@ -1,0 +1,71 @@
+.bee-reviews {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 84%;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+  scrollbar-width: none;
+}
+
+.bee-reviews::-webkit-scrollbar {
+  display: none;
+}
+
+.bee-rev {
+  display: grid;
+  gap: 0.625rem;
+  align-content: start;
+  margin: 0;
+  padding: 1.125rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--bee-radius);
+  background: var(--brand-paper);
+  scroll-snap-align: start;
+}
+
+.bee-rev__sample {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.bee-rev__stars {
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  color: var(--brand-honey);
+}
+
+.bee-rev__text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.45;
+}
+
+.bee-rev__text::before {
+  content: "“";
+}
+
+.bee-rev__text::after {
+  content: "”";
+}
+
+.bee-rev__source {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 768px) {
+  .bee-reviews {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+}

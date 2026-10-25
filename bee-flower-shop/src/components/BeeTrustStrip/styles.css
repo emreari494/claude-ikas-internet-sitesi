@@ -1,0 +1,47 @@
+.bee-trust {
+  margin-top: 1.75rem;
+  border-block: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.bee-trust__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  max-width: 73.75rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  background: var(--color-border);
+}
+
+.bee-trust__item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 0.75rem;
+  background: var(--color-bg);
+  font-size: 0.78125rem;
+  line-height: 1.35;
+}
+
+.bee-trust__icon {
+  font-size: 1.625rem;
+  color: var(--color-accent);
+}
+
+.bee-trust__title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .bee-trust__list {
+    grid-template-columns: repeat(var(--bee-trust-cols, 4), 1fr);
+  }
+
+  .bee-trust__item {
+    justify-content: center;
+  }
+}

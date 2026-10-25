@@ -1,6 +1,8 @@
 // Auto-generated global type definitions for ikas code components.
 // This file is regenerated automatically — do not edit manually.
 
+/** Enum type: WJmfJCA67f */
+export type BeeIcon = "heart" | "clock" | "qr" | "truck" | "gift" | "return";
 /** Enum type: CTMWlOfqfo */
 export type BlogCardRatio = "1/1" | "4/3";
 /** Enum type: 5Y6qMgnl0u */

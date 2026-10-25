@@ -1,0 +1,87 @@
+.bee-how {
+  margin-top: 3rem;
+  padding-block: 3rem;
+  border-block: 1px solid var(--color-border);
+  background: var(--brand-paper);
+}
+
+.bee-how__steps {
+  display: grid;
+  gap: 1.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bee-how__step {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 0.875rem;
+  align-items: center;
+}
+
+.bee-how__img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+}
+
+.bee-how__title {
+  margin: 0 0 0.125rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.bee-how__num {
+  color: var(--color-accent);
+}
+
+.bee-how__text {
+  margin: 0;
+  font-size: 0.84375rem;
+  color: var(--color-text-secondary);
+}
+
+.bee-game {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 1.375rem 1.25rem;
+  border: 1px solid var(--brand-sage);
+  border-radius: var(--bee-radius);
+  background: var(--brand-sage-soft);
+}
+
+.bee-game__title {
+  font-size: clamp(1.625rem, 6.5vw, 2.25rem);
+}
+
+.bee-game__text {
+  margin: 0;
+  max-width: 48ch;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.bee-game__btn {
+  justify-self: start;
+}
+
+@media (min-width: 768px) {
+  .bee-how__steps {
+    grid-template-columns: repeat(var(--bee-how-cols, 4), 1fr);
+    gap: 1.75rem;
+  }
+
+  .bee-how__step {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .bee-how__img {
+    width: 11.25rem;
+    height: 11.25rem;
+  }
+}
